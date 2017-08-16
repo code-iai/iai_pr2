@@ -16,6 +16,28 @@ simulated_joints:
   - r_upper_arm_roll_joint
   - r_wrist_flex_joint
   - r_wrist_roll_joint
+  - laser_tilt_mount_joint
+  - r_gripper_l_finger_joint
+  - r_gripper_r_finger_joint
+  - l_gripper_l_finger_joint
+  - l_gripper_r_finger_joint
+  - l_gripper_l_finger_tip_joint
+  - l_gripper_r_finger_tip_joint
+  - r_gripper_l_finger_tip_joint
+  - r_gripper_r_finger_tip_joint
+  - fl_caster_l_wheel_joint
+  - fl_caster_r_wheel_joint
+  - fr_caster_l_wheel_joint
+  - fr_caster_r_wheel_joint
+  - bl_caster_l_wheel_joint
+  - bl_caster_r_wheel_joint
+  - br_caster_l_wheel_joint
+  - br_caster_r_wheel_joint
+  - fl_caster_rotation_joint
+  - fr_caster_rotation_joint
+  - bl_caster_rotation_joint
+  - br_caster_rotation_joint
+
 controlled_joints:
   - head_pan_joint
   - head_tilt_joint
@@ -34,6 +56,10 @@ controlled_joints:
   - r_upper_arm_roll_joint
   - r_wrist_flex_joint
   - r_wrist_roll_joint
+  - r_gripper_l_finger_joint
+  - r_gripper_r_finger_joint
+  - l_gripper_l_finger_joint
+  - l_gripper_r_finger_joint
 start_config:
   torso_lift_joint: 0.3000262665739086
   head_pan_joint: -0.016552842705291115
@@ -45,13 +71,13 @@ start_config:
   r_elbow_flex_joint: -1.6422521567729969
   r_wrist_flex_joint: -1.5074640847105494
   r_wrist_roll_joint: 1.90604009753
-  l_upper_arm_roll_joint: 1.494246189291399
-  l_shoulder_pan_joint: 1.8567671758192446
-  l_shoulder_lift_joint: 1.2951859994880797
-  l_forearm_roll_joint: 2.05374050704
-  l_elbow_flex_joint: -0.1502452052543597
-  l_wrist_flex_joint: -0.24070765558196916
-  l_wrist_roll_joint:  6.11927676151
+  l_elbow_flex_joint: -1.00213547438
+  l_forearm_roll_joint: 0.834058592757
+  l_shoulder_lift_joint: 0.103903217692
+  l_shoulder_pan_joint: 0.3688738798
+  l_upper_arm_roll_joint: 0.730572260662
+  l_wrist_flex_joint: -1.34841376457
+  l_wrist_roll_joint: 7.00870758722
 projection_mode: false
 sim_frequency: 100
 watchdog_period: 0.1
