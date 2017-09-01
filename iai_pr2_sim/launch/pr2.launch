@@ -1,18 +1,12 @@
 <launch>
-  <arg name="sim_frequency" default="100" />
-
-  <arg name="start_config_file" 
-       default="$(find iai_pr2_sim)/config/start_config.yaml" />
 
   <include file="$(find iai_pr2_description)/launch/upload_pr2.launch" />
 
-  <node pkg="iai_naive_kinematics_sim" type="velocity_resolved_sim" 
-        name="velocity_resolved_sim" output="screen">
-    <rosparam param="controlled_joints"
-      file="$(find iai_pr2_sim)/config/controlled_joints.yaml" />
-    <rosparam param="start_config" file="$(arg start_config_file)" />
-    <param name="sim_frequency" value="$(arg sim_frequency)" />
-    <param name="watchdog_period" value="0.1" />
+  <node pkg="iai_naive_kinematics_sim" type="simulator" 
+        name="pr2" output="screen">
+    <rosparam command="load"
+        file="$(find iai_pr2_sim)/config/sim_config.yaml" />
+    <remap from="~joint_states" to="/joint_states" />
   </node>
 
   <node pkg="robot_state_publisher" type="robot_state_publisher"
@@ -20,10 +14,10 @@
 
   <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" />
 
-  <node pkg="tf" type="static_transform_publisher" name="fake_localization"
-        output="screen" args="0 0 0 0 0 0 map odom 100" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization"
+        output="screen" args="0 0 0 0 0 0 map odom" />
 
-  <node pkg="tf" type="static_transform_publisher" name="fake_odometry"
-        output="screen" args="0 0 0 0 0 0 odom base_footprint 100" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_odometry"
+        output="screen" args="0 0 0 0 0 0 odom base_footprint" />
 
 </launch>
