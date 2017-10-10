@@ -1,0 +1,52 @@
+hardware_interface:
+  joints:
+    - torso_lift_joint
+    - r_upper_arm_roll_joint
+    - r_shoulder_pan_joint
+    - r_shoulder_lift_joint
+    - r_forearm_roll_joint
+    - r_elbow_flex_joint
+    - r_wrist_flex_joint
+    - r_wrist_roll_joint
+    - l_upper_arm_roll_joint
+    - l_shoulder_pan_joint
+    - l_shoulder_lift_joint
+    - l_forearm_roll_joint
+    - l_elbow_flex_joint
+    - l_wrist_flex_joint
+    - l_wrist_roll_joint
+    - head_pan_joint
+    - head_tilt_joint
+    - laser_tilt_mount_joint
+    - r_gripper_l_finger_joint
+    - r_gripper_r_finger_joint
+    - l_gripper_l_finger_joint
+    - l_gripper_r_finger_joint
+    - l_gripper_l_finger_tip_joint
+    - l_gripper_r_finger_tip_joint
+    - r_gripper_l_finger_tip_joint
+    - r_gripper_r_finger_tip_joint
+generic_hw_control_loop:
+  loop_hz: &loop_rate 100
+  cycle_time_error_threshold: 0.015
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: *loop_rate
+whole_body_controller:
+  type: position_controllers/JointTrajectoryController  
+  joints:
+    - torso_lift_joint
+    - r_upper_arm_roll_joint
+    - r_shoulder_pan_joint
+    - r_shoulder_lift_joint
+    - r_forearm_roll_joint
+    - r_elbow_flex_joint
+    - r_wrist_flex_joint
+    - r_wrist_roll_joint
+    - l_upper_arm_roll_joint
+    - l_shoulder_pan_joint
+    - l_shoulder_lift_joint
+    - l_forearm_roll_joint
+    - l_elbow_flex_joint
+    - l_wrist_flex_joint
+    - l_wrist_roll_joint

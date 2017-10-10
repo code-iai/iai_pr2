@@ -1,0 +1,15 @@
+<launch>
+  <include file="$(find iai_pr2_description)/launch/upload_pr2.launch" />
+
+  <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim.yaml" />
+
+  <remap from="/joint_trajectory_controller" to="/whole_body_controller" />
+
+  <node pkg="ros_control_boilerplate" type="sim_hw_main" name="simulator" 
+        output="screen"/>
+
+  <node pkg="controller_manager" type="spawner" name="spawner" output="screen"
+        args="joint_state_controller joint_trajectory_controller --shutdown-timeout 0.5" />
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+</launch>
