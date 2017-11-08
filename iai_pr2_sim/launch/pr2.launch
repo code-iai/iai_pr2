@@ -11,13 +11,7 @@
 
   <node pkg="robot_state_publisher" type="robot_state_publisher"
         name="robot_state_publisher" />
-
-  <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" />
-
-  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization"
-        output="screen" args="0 0 0 0 0 0 map odom" />
-
-  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_odometry"
-        output="screen" args="0 0 0 0 0 0 odom base_footprint" />
+  
+  <include file="$(find iai_pr2_sim)/launch/fake_localization.launch" />
 
 </launch>

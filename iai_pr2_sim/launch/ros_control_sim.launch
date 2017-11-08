@@ -12,4 +12,7 @@
         args="joint_state_controller joint_trajectory_controller --shutdown-timeout 0.5" />
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+
+  <include file="$(find iai_pr2_sim)/launch/fake_localization.launch" />
+
 </launch>
