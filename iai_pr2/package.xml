@@ -21,6 +21,7 @@
   <run_depend>iai_pr2_description</run_depend>
   <!-- <run_depend>iai_pr2_bringup</run_depend> -->
   <run_depend>iai_pr2_sim</run_depend>
+  <run_depend>iai_pr2_controller_configuration</run_depend>
 
   <export>
     <metapackage/>

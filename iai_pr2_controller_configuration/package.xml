@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>iai_pr2_controller_configuration</name>
+  <version>0.0.0</version>
+  <description>
+    Configuration files and launch-files to start the PR2 of the IAI 
+    with custom low-level controllers
+  </description>
+
+  <maintainer email="georg.bartels@cs.uni-bremen.de">Georg Bartels</maintainer>
+  <author email="georg.bartels@cs.uni-bremen.de">Georg Bartels</author>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>pr2_controller_manager</pr2_controller_manager>
+  <run_depend>pr2_controller_configuration</pr2_controller_manager>
+</package>
