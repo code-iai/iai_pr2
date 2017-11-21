@@ -1,4 +1,5 @@
 hardware_interface:
+  sim_control_mode: 0
   joints:
     - torso_lift_joint
     - r_upper_arm_roll_joint
