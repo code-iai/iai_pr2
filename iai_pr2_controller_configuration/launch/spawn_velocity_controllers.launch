@@ -1,6 +1,6 @@
 <launch>
 
-  <rosparam command="load" file="$(find pr2_controller_configuration)/pr2_joint_velocity_controllers.yaml" />
+  <rosparam command="load" file="$(find iai_pr2_controller_configuration)/pr2_joint_velocity_controllers.yaml" />
     
   <node pkg="pr2_controller_manager" type="unspawner" name="unspawner_position_controllers"
         output="screen" args="l_arm_controller r_arm_controller torso_controller" />

@@ -14,5 +14,4 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <depend>pr2_controller_manager</depend>
-  <depend>pr2_controller_configuration</depend>
 </package>
