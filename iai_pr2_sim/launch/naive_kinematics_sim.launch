@@ -7,7 +7,7 @@
     <rosparam command="load"
         file="$(find iai_pr2_sim)/config/naive_kinematics_sim.yaml" />
     <remap from="~joint_states" to="/joint_states" />
-    <remap from="~commands" to="/whole_body_controller/velocities" />
+    <remap from="~commands" to="/whole_body_controller/velocity_controller/command" />
   </node>
 
   <node pkg="robot_state_publisher" type="robot_state_publisher"
