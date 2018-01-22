@@ -3,10 +3,11 @@
   <include file="$(find iai_pr2_description)/launch/upload_pr2.launch" />
 
   <node pkg="iai_naive_kinematics_sim" type="simulator" 
-        name="pr2" output="screen">
+        name="simulator" output="screen">
     <rosparam command="load"
-        file="$(find iai_pr2_sim)/config/sim_config.yaml" />
+        file="$(find iai_pr2_sim)/config/naive_kinematics_sim.yaml" />
     <remap from="~joint_states" to="/joint_states" />
+    <remap from="~commands" to="/whole_body_controller/velocities" />
   </node>
 
   <node pkg="robot_state_publisher" type="robot_state_publisher"
