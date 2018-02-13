@@ -1,0 +1,15 @@
+<launch>
+  <arg name="gazebo" default="false" />
+  <arg name="trajectory_controller" default="true" />
+
+  <include if="$(arg gazebo)" file="$(find iai_pr2_sim)/launch/gazebo.launch" >
+    <arg name="trajectory_controller" value="$(arg trajectory_controller)" />
+  </include>
+
+  <group unless="$(arg gazebo)">
+    <include if="$(arg trajectory_controller)" file="$(find iai_pr2_sim)/launch/ros_control_sim.launch" />
+
+    <include unless="$(arg trajectory_controller)" file="$(find iai_pr2_sim)/launch/naive_kinematics_sim.launch" />
+  </group>
+
+</launch>

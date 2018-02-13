@@ -1,0 +1,12 @@
+<launch>
+  <arg name="trajectory_controller" default="true" />
+
+  <include file="$(find pr2_gazebo)/launch/pr2_empty_world.launch" />
+
+  <include file="$(find iai_pr2_sim)/launch/fake_localization.launch" />
+
+  <group unless="$(arg trajectory_controller)>
+    <!-- unspawn regular controllers -->
+    <!-- spawn velocity controllers -->
+  </group>
+</launch>
