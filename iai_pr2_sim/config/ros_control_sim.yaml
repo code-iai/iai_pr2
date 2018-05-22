@@ -19,6 +19,10 @@ hardware_interface:
     - head_pan_joint
     - head_tilt_joint
     - laser_tilt_mount_joint
+    - l_gripper_joint
+    - r_gripper_joint
+    - r_gripper_motor_slider_joint
+    - l_gripper_motor_slider_joint
     - r_gripper_l_finger_joint
     - r_gripper_r_finger_joint
     - l_gripper_l_finger_joint
@@ -27,12 +31,8 @@ hardware_interface:
     - l_gripper_r_finger_tip_joint
     - r_gripper_l_finger_tip_joint
     - r_gripper_r_finger_tip_joint
-    - l_gripper_joint
-    - r_gripper_joint
     - l_gripper_motor_screw_joint
     - r_gripper_motor_screw_joint
-    - r_gripper_motor_slider_joint
-    - l_gripper_motor_slider_joint
     - torso_lift_motor_screw_joint
     - bl_caster_rotation_joint  
     - bl_caster_l_wheel_joint  
@@ -70,3 +70,5 @@ whole_body_controller:
     - l_elbow_flex_joint
     - l_wrist_flex_joint
     - l_wrist_roll_joint
+    - head_pan_joint
+    - head_tilt_joint

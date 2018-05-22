@@ -2,6 +2,8 @@
   <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization"
         output="screen" args="0 0 0 0 0 0 map odom" />
 
-  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_odometry"
-        output="screen" args="0 0 0 0 0 0 odom base_footprint" />
+  <node pkg="iai_naive_kinematics_sim" type="navp_faker_tf.py" name="navp_faker" output="screen" >
+  	<rosparam param="odom_frame">odom</rosparam>
+  	<rosparam param="root_frame">base_footprint</rosparam>
+  </node>
 </launch>
