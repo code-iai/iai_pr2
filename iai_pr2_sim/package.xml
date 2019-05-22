@@ -21,6 +21,7 @@
   <depend>joint_trajectory_controller</depend>
   <depend>joint_state_controller</depend>
   <depend>controller_manager</depend>
+  <depend>omni_pose_follower</depend>
   <depend version_gte="1.11.2">robot_state_publisher</depend>
   <depend version_gte="0.5.13">tf2_ros</depend>
 
