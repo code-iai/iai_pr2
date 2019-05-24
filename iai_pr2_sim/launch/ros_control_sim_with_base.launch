@@ -6,13 +6,11 @@
 
   <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim.yaml" />
 
-  <remap from="/joint_trajectory_controller" to="/whole_body_controller" />
-
   <node pkg="ros_control_boilerplate" type="sim_hw_main" name="simulator" output="screen">
     <remap from="joint_states" to="body/joint_states" />
   </node>
 
-  <node pkg="controller_manager" type="spawner" name="spawner" output="screen" args="joint_state_controller joint_trajectory_controller --shutdown-timeout 0.5" />
+  <node pkg="controller_manager" type="spawner" name="spawner" output="screen" args="joint_state_controller whole_body_controller/body --shutdown-timeout 0.5" />
 
   <node pkg="iai_naive_kinematics_sim" type="simulator" name="base_simulator" output="screen">
     <rosparam command="load" file="$(find iai_pr2_sim)/config/naive_kinematics_sim_base.yaml" />
@@ -20,10 +18,23 @@
     <remap from="~commands" to="/commands" />
   </node>
 
+  <node pkg="iai_naive_kinematics_sim" type="simulator" name="r_gripper_simulator" output="screen">
+    <rosparam command="load" file="$(find iai_pr2_sim)/config/naive_kinematics_sim_r_gripper.yaml" />
+    <remap from="~joint_states" to="r_gripper/joint_states" />
+    <remap from="~commands" to="/r_gripper/commands" />
+  </node>
+  <node pkg="iai_naive_kinematics_sim" type="simulator" name="l_gripper_simulator" output="screen">
+    <rosparam command="load" file="$(find iai_pr2_sim)/config/naive_kinematics_sim_l_gripper.yaml" />
+    <remap from="~joint_states" to="l_gripper/joint_states" />
+    <remap from="~commands" to="/l_gripper/commands" />
+  </node>
+
   <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
     <rosparam param="source_list">
     - base/joint_states
     - body/joint_states
+    - r_gripper/joint_states
+    - l_gripper/joint_states
     </rosparam>
     <rosparam param="zeros">
     'odom_x_joint': 0.0
@@ -46,12 +57,6 @@
     <remap from="~commands" to="/commands" />
   </node>
 
-  <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch">
-    <arg name="odom_x_joint" value="odom_x_joint"/>
-    <arg name="odom_y_joint" value="odom_y_joint"/>
-    <arg name="odom_z_joint" value="odom_z_joint"/>
-    <arg name="p" value="10"/>
-    <arg name="d" value="0"/>
-  </include>
+  <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch"/>
 
 </launch>
