@@ -1,0 +1,3 @@
+<launch>
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find iai_pr2_description)/robots/pr2_with_odom_joints_calibrated.xacro'" />
+</launch>
