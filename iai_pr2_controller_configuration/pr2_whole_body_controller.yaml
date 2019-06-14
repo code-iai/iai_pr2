@@ -80,7 +80,7 @@ arm_joint_goal_threshold: &arm_joint_goal_threshold
 torso_joint_goal_threshold: &torso_joint_goal_threshold
   goal: 0.01
 
-upper_body_controller:
+whole_body_controller:
   type: "robot_mechanism_controllers/JointTrajectoryActionController"
   joints: &joint_name_list
     - torso_lift_joint
