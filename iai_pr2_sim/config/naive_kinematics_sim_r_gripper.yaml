@@ -1,0 +1,19 @@
+simulated_joints:
+  - r_gripper_l_finger_joint
+  - r_gripper_r_finger_joint
+  - r_gripper_l_finger_tip_joint
+  - r_gripper_r_finger_tip_joint
+
+controlled_joints:
+  - r_gripper_l_finger_joint
+  - r_gripper_r_finger_joint
+  - r_gripper_l_finger_tip_joint
+  - r_gripper_r_finger_tip_joint
+start_config:
+  r_gripper_l_finger_joint: 0.54
+  r_gripper_r_finger_joint: 0.54
+  r_gripper_l_finger_tip_joint: 0.54
+  r_gripper_r_finger_tip_joint: 0.54
+projection_mode: false
+sim_frequency: 100
+watchdog_period: 0.1

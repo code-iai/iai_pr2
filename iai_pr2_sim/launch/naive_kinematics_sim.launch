@@ -1,0 +1,20 @@
+<launch>
+
+  <include file="$(find iai_pr2_description)/launch/upload_pr2.launch" />
+
+  <node pkg="iai_naive_kinematics_sim" type="simulator" 
+        name="simulator" output="screen">
+    <rosparam command="load"
+        file="$(find iai_pr2_sim)/config/naive_kinematics_sim.yaml" />
+    <remap from="~joint_states" to="/joint_states" />
+    <remap from="~commands" to="/whole_body_controller/velocity_controller/command" />
+  </node>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher"
+        name="robot_state_publisher" />
+
+  <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" />
+ 
+  <include file="$(find iai_pr2_sim)/launch/fake_localization.launch" />
+
+</launch>

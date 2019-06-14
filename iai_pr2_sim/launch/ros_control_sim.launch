@@ -1,5 +1,6 @@
 <launch>
-  <include file="$(find iai_pr2_description)/launch/upload_pr2.launch" />
+  <remap from="/whole_body_controller/state" to="/tests/state"/>
+  <include file="$(find iai_pr2_description)/launch/upload_pr2_with_odom_joints.launch" />
 
   <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim.yaml" />
 
@@ -13,6 +14,8 @@
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 
-  <include file="$(find iai_pr2_sim)/launch/fake_localization.launch" />
+  <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization" output="screen" args="0 0 0 0 0 0 map odom" />
 
 </launch>

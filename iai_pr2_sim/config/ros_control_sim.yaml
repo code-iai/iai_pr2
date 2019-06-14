@@ -1,4 +1,5 @@
 hardware_interface:
+  sim_control_mode: 0
   joints:
     - torso_lift_joint
     - r_upper_arm_roll_joint
@@ -18,21 +19,32 @@ hardware_interface:
     - head_pan_joint
     - head_tilt_joint
     - laser_tilt_mount_joint
-    - r_gripper_l_finger_joint
-    - r_gripper_r_finger_joint
-    - l_gripper_l_finger_joint
-    - l_gripper_r_finger_joint
-    - l_gripper_l_finger_tip_joint
-    - l_gripper_r_finger_tip_joint
-    - r_gripper_l_finger_tip_joint
-    - r_gripper_r_finger_tip_joint
+    - l_gripper_joint
+    - r_gripper_joint
+    - r_gripper_motor_slider_joint
+    - l_gripper_motor_slider_joint
+    - l_gripper_motor_screw_joint
+    - r_gripper_motor_screw_joint
+    - torso_lift_motor_screw_joint
+    - bl_caster_rotation_joint  
+    - bl_caster_l_wheel_joint  
+    - bl_caster_r_wheel_joint  
+    - br_caster_rotation_joint  
+    - br_caster_l_wheel_joint  
+    - br_caster_r_wheel_joint  
+    - fl_caster_rotation_joint  
+    - fl_caster_l_wheel_joint  
+    - fl_caster_r_wheel_joint  
+    - fr_caster_rotation_joint  
+    - fr_caster_l_wheel_joint  
+    - fr_caster_r_wheel_joint  
 generic_hw_control_loop:
   loop_hz: &loop_rate 100
   cycle_time_error_threshold: 0.015
 joint_state_controller:
   type: joint_state_controller/JointStateController
   publish_rate: *loop_rate
-whole_body_controller:
+whole_body_controller: &whole_body_controller
   type: position_controllers/JointTrajectoryController  
   joints:
     - torso_lift_joint
@@ -50,3 +62,6 @@ whole_body_controller:
     - l_elbow_flex_joint
     - l_wrist_flex_joint
     - l_wrist_roll_joint
+    - head_pan_joint
+    - head_tilt_joint
+whole_body_controller/body: *whole_body_controller

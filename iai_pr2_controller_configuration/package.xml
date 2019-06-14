@@ -13,6 +13,9 @@
   <license>TODO</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <depend>pr2_controller_manager</depend>
-  <depend>pr2_controller_configuration</depend>
+  <!-- FIXME: This was uncommented to not break compilation of the simulation
+              of giskard_pr2 on ROS Kinetic. The underlying problem is that the
+              PR2 infrastructure has not been ported and released for ROS Kinetic.
+              Once that has happened, this dependency should be uncommented. -->
+  <!--depend>pr2_controller_manager</depend-->
 </package>
