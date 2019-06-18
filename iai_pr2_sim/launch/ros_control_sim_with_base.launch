@@ -2,7 +2,7 @@
   
   <include file="$(find iai_pr2_description)/launch/upload_pr2_with_odom_joints.launch" />
 
-  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization" output="screen" args="0 0 0 0 0 0 map odom" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization" output="screen" args="0 0 0 0 0 0 map odom_combined" />
 
   <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim.yaml" />
 
