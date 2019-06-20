@@ -53,6 +53,7 @@
     <param name="odom_x_joint" value="odom_x_joint"/>
     <param name="odom_y_joint" value="odom_y_joint"/>
     <param name="odom_z_joint" value="odom_z_joint"/>
+    <param name="odom" value="odom_combined"/>
     <remap from="~cmd_vel" to="/cmd_vel" />
     <remap from="~commands" to="/commands" />
   </node>
