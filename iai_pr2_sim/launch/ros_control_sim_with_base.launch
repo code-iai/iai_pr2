@@ -60,5 +60,6 @@
 
   <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch"/>
 
+  <node pkg="iai_pr2_sim" type="set_initial_joint_state.py" name="set_initial_joint_state" />
 
 </launch>
