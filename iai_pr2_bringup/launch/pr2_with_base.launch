@@ -1,0 +1,18 @@
+<launch>
+
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find iai_pr2_description)/robots/pr2_with_odom_joints_calibrated.xacro'" />
+
+    <!-- Robot Analyzer --> <rosparam command="load" file="$(find pr2_bringup)/config/pr2_analyzers.yaml" ns="diag_agg" />
+
+    <arg name="c2" default="true"/>
+
+    <!-- Robot bringup -->
+    <include file="$(find pr2_bringup)/pr2.launch">
+        <arg name="c2" value="$(arg c2)"/>
+    </include>
+
+    <include file="/etc/ros/indigo/ft.launch" />
+
+    <rosparam file="/etc/ros/robot.yaml"/>
+
+</launch>

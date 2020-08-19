@@ -1,0 +1,9 @@
+<launch>
+  <arg name="gui" default="false" />
+
+  <include file="$(find giskardpy)/launch/giskardpy_pr2_real.launch">
+    <arg name="gui" value="$(arg gui)" />
+  </include>
+
+  <include file="$(find iai_pr2_bringup/launch/giskardpy_add_kitchen.launch" />
+</launch>
