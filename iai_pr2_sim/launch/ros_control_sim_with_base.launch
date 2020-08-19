@@ -2,7 +2,7 @@
   
   <include file="$(find iai_pr2_description)/launch/upload_pr2_with_odom_joints.launch" />
 
-  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization" output="screen" args="0 0 0 0 0 0 map odom" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization" output="screen" args="0 0 0 0 0 0 map odom_combined" />
 
   <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim.yaml" />
 
@@ -53,21 +53,13 @@
     <param name="odom_x_joint" value="odom_x_joint"/>
     <param name="odom_y_joint" value="odom_y_joint"/>
     <param name="odom_z_joint" value="odom_z_joint"/>
+    <param name="odom" value="odom_combined"/>
     <remap from="~cmd_vel" to="/cmd_vel" />
     <remap from="~commands" to="/commands" />
   </node>
 
   <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch"/>
 
-    <node pkg="giskardpy" type="joint_trajectory_splitter.py" name="joint_trajectory_splitter" output="screen">
-    <rosparam param="state_topics">
-      - /whole_body_controller/base/state 
-      - /whole_body_controller/body/state
-    </rosparam>
-    <rosparam param="client_topics">
-      - /whole_body_controller/base/follow_joint_trajectory
-      - /whole_body_controller/body/follow_joint_trajectory
-    </rosparam>
-  </node>
+  <node pkg="iai_pr2_sim" type="set_initial_joint_state.py" name="set_initial_joint_state" />
 
 </launch>
