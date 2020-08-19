@@ -1,4 +1,6 @@
-# How to start pr2
+
+How to start the PR2
+====================
 
 
 
@@ -7,7 +9,7 @@
 To change into 16.04:
 
     ease@pr2x:~$ chxenial
-    
+
 To source the ROS workspace:
 
     ease@pr2x:~$ ros
@@ -29,14 +31,6 @@ or
 
     ease@pr2a:~$ roslaunch /etc/ros/robot.launch
 
-#### camera driver PR2B
-
-    ease@pr2b:~$ roslaunch /etc/ros/openni_head.launch
-
-#### keeping camera driver alive PR2B
-
-    ease@pr2b:~$ rostopic hz /kinect_head/depth_registered/points	
-
 #### occupancy grid, kitchen urdf, kitchen joint state and tf publisher
 
     (ubuntu1604)ease@pr2a:~$ roslaunch iai_maps no_json_obj.launch
@@ -49,16 +43,19 @@ or
 
     # NOT USED: (ubuntu1604)ease@pr2b:~$ roslaunch ease_demo json_prolog.launch
 
+#### camera driver PR2B
+
+    ease@pr2b:~$ roslaunch /etc/ros/openni_head.launch
+
+#### keeping camera driver alive PR2B
+
+    ease@pr2b:~$ rostopic hz /kinect_head/depth_registered/points
+
 #### robosherlock PR2B
 
     # OLD RS: (ubuntu1604)ease@pr2b:~$ roslaunch rs_run_configs pnp_ease.launch vis:=false
     # NOT SO OLD: (ubuntu1604)ease@pr2b:~$ roslaunch rs_run_configs pnp_ease.launch
     (ubuntu1604)ease@pr2b:~$ rosrun robosherlock run _ae:=pnp_ease_without_oir _vis:=false _wait:=true _parallel:=false _pervasive:=false _withIDRes:=false
-
-#### fast IK solver for robot's arms (used by CRAM reasoning)
-
-    (ubuntu1604)ease@pr2a:~$ roslaunch pr2_arm_kinematics pr2_ik_larm_node.launch
-    (ubuntu1604)ease@pr2a:~$ roslaunch pr2_arm_kinematics pr2_ik_rarm_node.launch
 
 #### whole body controller
 
@@ -67,6 +64,11 @@ or
 #### giskard
 
     (ubuntu1604)ease@pr2b:~$ roslaunch ~/workspace/ros_general/src/iai_pr2/iai_pr2_bringup/launch/giskardpy_with_kitchen.launch # cause iai_pr2 is only in the 14.04 workspace
+
+#### fast IK solver for robot's arms (used by CRAM reasoning)
+
+    ease@pr2a:~$ roslaunch pr2_arm_kinematics pr2_ik_larm_node.launch
+    ease@pr2a:~$ roslaunch pr2_arm_kinematics pr2_ik_rarm_node.launch
 
 #### CRAM
 
