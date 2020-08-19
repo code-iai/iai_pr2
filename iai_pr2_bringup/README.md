@@ -61,16 +61,18 @@ ease@pr2a:~$ roslaunch iai_pr2_controller_configuration spawn_whole_body_control
 ```
 
  In the REPL:
+ ```
 CL-USER> (ros-load:load-system "cram_pr2_pick_place_demo" :cram-pr2-pick-place-demo)
 CL-USER> (roslisp-msg-protocol:md5sum 'giskard_msgs-msg:<movegoal>)
 CL-USER> (roslisp-msg-protocol:ros-datatype 'giskard_msgs-msg:<movegoal>)
 CL-USER> (roslisp-msg-protocol:string-to-ros-msgtype-symbol "giskard_msgs/MoveGoal")
 CL-USER> (roslisp-utilities:startup-ros)
 CL-USER> (demo::demo)
-# to stop demo, press Ctrl-C Ctrl-C
+```
+to stop demo, press Ctrl-C Ctrl-C
 
 
-=======================
+## debugging
 
 Check voltage of the 4 battery packs:
 ```
@@ -80,8 +82,6 @@ To get the voltage and charge info from the individual batteries:
 ```
 $ rostopic echo /diagnostics |grep -i "smart battery" -A 90
 ```
-
-========================
 
 Check which users are active on robot:
 ```
