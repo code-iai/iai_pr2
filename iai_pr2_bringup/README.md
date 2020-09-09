@@ -39,10 +39,6 @@ or
 
     ease@pr2a:~$ roslaunch iai_pr2_bringup pr2_manipulation.launch
 
-#### knowrob (including semantic map)
-
-    # NOT USED: (ubuntu1604)ease@pr2b:~$ roslaunch ease_demo json_prolog.launch
-
 #### camera driver PR2B
 
     ease@pr2b:~$ roslaunch /etc/ros/openni_head.launch
@@ -51,11 +47,11 @@ or
 
     ease@pr2b:~$ rostopic hz /kinect_head/depth_registered/points
 
-#### robosherlock PR2B
+#### robosherlock and knowrob PR2B
 
-    # OLD RS: (ubuntu1604)ease@pr2b:~$ roslaunch rs_run_configs pnp_ease.launch vis:=false
-    # NOT SO OLD: (ubuntu1604)ease@pr2b:~$ roslaunch rs_run_configs pnp_ease.launch
-    (ubuntu1604)ease@pr2b:~$ rosrun robosherlock run _ae:=pnp_ease_without_oir _vis:=false _wait:=true _parallel:=false _pervasive:=false _withIDRes:=false
+    (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock robotvqa.launch # deep learning part
+    (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock json_prolog.launch initial_package:=robosherlock # knowrob
+    (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock robosherlock.launch # robosherlock itself
 
 #### whole body controller
 
