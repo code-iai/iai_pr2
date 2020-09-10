@@ -11,7 +11,7 @@ cd src
 wstool init
 wstool merge https://raw.githubusercontent.com/code-iai/iai_pr2/master/iai_pr2_sim/rosinstall/catkin.rosinstall
 wstool update
-rosdep install --ignore-src --from-paths iai_pr2/iai_pr2_sim/
+rosdep install --ignore-src --from-paths iai_pr2/
 cd ..
 catkin build
 source devel/setup.bash
