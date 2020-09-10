@@ -1,0 +1,12 @@
+- git: 
+    local-name: iai_pr2
+    uri: https://github.com/code-iai/iai_pr2.git
+    version: master
+- git: 
+    local-name: iai_naive_kinematics_sim
+    uri: https://github.com/code-iai/iai_naive_kinematics_sim.git
+    version: 18.04
+- git: 
+    local-name: omni_pose_follower
+    uri: https://github.com/code-iai/omni_pose_follower.git
+    version: master
