@@ -9,7 +9,7 @@ cd iai_pr2_sim_ws
 catkin init
 cd src
 wstool init
-wstool merge https://raw.githubusercontent.com/code-iai/iai_pr2/master/iai_pr2_sim/rosinstall/catkin.rosinstall
+wstool merge https://raw.githubusercontent.com/code-iai/iai_pr2/master/iai_pr2_sim/rosinstall/catkin-<your-distro>.rosinstall # e.g. catkin-melodic.rosinstall
 wstool update
 rosdep install --ignore-src --from-paths iai_pr2/
 cd ..
