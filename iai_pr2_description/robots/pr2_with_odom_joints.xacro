@@ -32,6 +32,6 @@
     <!-- limits chosen heuristically
            velocity: one slow complete turn around in 5-6s, so 6.2rad/6s ~= 1rad/s
            effort: reach max speed within 1s, Boxy has a mass of 200kg and a diagonale of 1m, so Fmax=200kg*1m*1m/s2 -->
-    <limit effort="200" velocity="0.2"/>
+    <limit effort="200" velocity="0.4"/>
   </joint>
 </robot>
