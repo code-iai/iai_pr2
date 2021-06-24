@@ -95,6 +95,8 @@ You need an account with sudo rights. The ease account doesn't have sudo. Ask so
 
 If you get the error that there is no controller on the USB bus, try ``$ lsusb`` and ensure that it's detected. Unplug and plug again if you have problems.
 
+If no combinations of plugging in / out /sixpair / turning off-on controller help, ``$ sudo poweroff`` is your friend.
+
 
 
 
