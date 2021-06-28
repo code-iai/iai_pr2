@@ -18,6 +18,9 @@ simulated_joints:
   - r_wrist_roll_joint
   - laser_tilt_mount_joint
   - torso_lift_motor_screw_joint
+  - odom_x_joint
+  - odom_y_joint
+  - odom_z_joint
 
 controlled_joints:
   - head_pan_joint
@@ -37,6 +40,10 @@ controlled_joints:
   - r_upper_arm_roll_joint
   - r_wrist_flex_joint
   - r_wrist_roll_joint
+  - odom_x_joint
+  - odom_y_joint
+  - odom_z_joint
+
 start_config:
   torso_lift_joint: 0.3000262665739086
   head_pan_joint: -0.016552842705291115
@@ -55,6 +62,9 @@ start_config:
   l_upper_arm_roll_joint: 0.730572260662
   l_wrist_flex_joint: -1.34841376457
   l_wrist_roll_joint: 7.00870758722
+  odom_x_joint: 0.0
+  odom_y_joint: 0.0
+  odom_z_joint: 0.0
 projection_mode: false
 sim_frequency: 100
 watchdog_period: 0.1
