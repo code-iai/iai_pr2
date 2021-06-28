@@ -85,6 +85,25 @@ In the REPL:
 To stop the demo, press Ctrl-C Ctrl-C
 
 
+### How to pair an unpaired PS3 controller
+
+Connect the PS3 controller (that has "PR2" label on it) to a usb port of pr2a PC (the one on the left, there's a USB port on the back at the top, you can access it if you try).
+
+    sudouser@pr2a:~$ sudo sixpair
+
+You need an account with sudo rights. The ease account doesn't have sudo. Ask somebody with sudo to ssh to the robot and run it for you, if needed.
+
+If you get the error that there is no controller on the USB bus, try ``$ lsusb`` and ensure that it's detected. Unplug and plug again if you have problems.
+
+If no combinations of plugging in / out /sixpair / turning off-on controller help, ``$ sudo poweroff`` is your friend.
+
+
+
+
+
+
+
+
 
 ---------------------------------------------------------------------
 
