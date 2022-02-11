@@ -1,10 +1,12 @@
 <launch>
   
+  <arg name="tf_prefix" default=""/>
+
   <include file="$(find iai_pr2_description)/launch/upload_pr2_with_odom_joints.launch" />
 
   <node pkg="iai_naive_kinematics_sim" type="map_odom_transform_publisher.py" name="map_odom_transform_publisher" output="screen">
     <param name="parent_frame" value="map"/>
-    <param name="child_frame" value="odom_combined"/>
+    <param name="child_frame" value="$(arg tf_prefix)odom_combined"/>
   </node>
 
   <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim.yaml" />
@@ -18,18 +20,20 @@
   <node pkg="iai_naive_kinematics_sim" type="simulator" name="base_simulator" output="screen">
     <rosparam command="load" file="$(find iai_pr2_sim)/config/naive_kinematics_sim_base.yaml" />
     <remap from="~joint_states" to="base/joint_states" />
-    <remap from="~commands" to="/commands" />
+    <!-- Remapping to global topics will break ros' group namespacing -->
+    <remap from="~commands" to="commands" />
   </node>
 
   <node pkg="iai_naive_kinematics_sim" type="simulator" name="r_gripper_simulator" output="screen">
     <rosparam command="load" file="$(find iai_pr2_sim)/config/naive_kinematics_sim_r_gripper.yaml" />
     <remap from="~joint_states" to="r_gripper/joint_states" />
-    <remap from="~commands" to="/r_gripper/commands" />
+    <remap from="~commands" to="r_gripper/commands" />
   </node>
   <node pkg="iai_naive_kinematics_sim" type="simulator" name="l_gripper_simulator" output="screen">
     <rosparam command="load" file="$(find iai_pr2_sim)/config/naive_kinematics_sim_l_gripper.yaml" />
     <remap from="~joint_states" to="l_gripper/joint_states" />
-    <remap from="~commands" to="/l_gripper/commands" />
+    <!-- Remapping to global topics will break ros' group namespacing -->
+    <remap from="~commands" to="l_gripper/commands" />
   </node>
 
   <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
@@ -48,7 +52,9 @@
     <param name="use_gui" value="False"/>
   </node>
 
-  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="prefix_tf_with" value="$(arg tf_prefix)"/>
+  </node>
 
   <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" />
 
@@ -56,9 +62,11 @@
     <param name="odom_x_joint" value="odom_x_joint"/>
     <param name="odom_y_joint" value="odom_y_joint"/>
     <param name="odom_z_joint" value="odom_z_joint"/>
-    <param name="odom" value="odom_combined"/>
-    <remap from="~cmd_vel" to="/cmd_vel" />
-    <remap from="~commands" to="/commands" />
+    <param name="odom" value="$(arg tf_prefix)odom_combined"/>
+    <param name="base_footprint" value="$(arg tf_prefix)base_footprint" />
+    <!-- Remapping to global topics will break ros' group namespacing -->
+    <remap from="~cmd_vel" to="cmd_vel" />
+    <remap from="~commands" to="commands" />
   </node>
 
   <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch"/>

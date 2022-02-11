@@ -7,7 +7,8 @@ from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
 rospy.init_node('initial_joint_state_setter',
                 anonymous=True)
-ac = ActionClient('/whole_body_controller/body/follow_joint_trajectory', FollowJointTrajectoryAction)
+ns = rospy.get_namespace()
+ac = ActionClient(u'{}whole_body_controller/body/follow_joint_trajectory'.format(ns), FollowJointTrajectoryAction)
 ac.wait_for_server()
 goal = FollowJointTrajectoryGoal()
 traj = JointTrajectory()
