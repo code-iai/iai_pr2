@@ -65,7 +65,7 @@ whole_body_controller: &whole_body_controller
     - head_pan_joint
     - head_tilt_joint
   gains:
-    torso_lift_joint: {p: 20000, i: 1000, d: 500}
+    torso_lift_joint: {p: 2000, i: 100, d: 50}
     r_upper_arm_roll_joint: {p: 2000, i: 100, d: 50}
     r_shoulder_pan_joint: {p: 2000, i: 100, d: 50}
     r_shoulder_lift_joint: {p: 2000, i: 100, d: 50}
