@@ -7,10 +7,9 @@
     <param name="child_frame" value="odom_combined"/>
   </node>
 
-  <node pkg="iai_naive_kinematics_sim" type="simulator" name="simulator" output="screen">
+  <node pkg="iai_naive_kinematics_sim" type="simulator" name="body_controller" output="screen">
     <rosparam command="load" file="$(find iai_pr2_sim)/config/naive_kinematics_sim_combined.yaml" />
-    <remap from="~joint_states" to="/body/joint_states" />
-    <remap from="~commands" to="/body_commands" />
+    <remap from="~commands" to="~command" />
   </node>
 
     <node pkg="iai_naive_kinematics_sim" type="simulator" name="r_gripper_simulator" output="screen">
@@ -26,7 +25,7 @@
 
   <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
     <rosparam param="source_list">
-    - body/joint_states
+    - body_controller/joint_states
     - r_gripper/joint_states
     - l_gripper/joint_states
     </rosparam>
