@@ -3719,6 +3719,13 @@
       </geometry>
       <material name="Grey"/>
     </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 -0.012"/>
+      <geometry>
+        <cylinder length="0.0356" radius="0.0225"/>
+      </geometry>
+      <material name="Grey"/>
+    </collision>
   </link>
   <joint name="l_gripper_palm_joint" type="fixed">
     <parent link="l_force_torque_link"/>
