@@ -11,17 +11,15 @@
 
   <group ns="$(arg namespace)">
     <include file="$(find mujoco_sim)/launch/mujoco_sim.launch">
-      <arg name="robot" value="$(find iai_pr2_sim)/config/pr2_mujoco.urdf" />
-      <arg name="use_odom_joints" value="true" />
+      <arg name="robot" value="$(find iai_pr2_description)/robots/pr2_calibrated_with_ft2.urdf" />
       <arg name="use_urdf" value="true" />
-      <arg name="config" default="$(find iai_pr2_sim)/config/mujoco_sim_config.xml" />
-      <arg name="joint_inits" default="$(find iai_pr2_sim)/config/mujoco_initial_joint_state.yaml" />
-      <arg name="root_frame_id" default="odom_combined" />
+      <arg name="config" default="$(find iai_pr2_sim)/config/mujoco_config.yaml" />
+      <arg name="world" value="$(find iai_pr2_sim)/config/mujoco_world.xml" />
     </include>
     <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim_mujoco.yaml" />
     <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="spawn
 joint_state_controller whole_body_controller" />
-    <node name="rqt_joint_trajectory_controller" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" />
+    <!-- <node name="rqt_joint_trajectory_controller" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" /> -->
   </group>
 
   <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
