@@ -1,12 +1,12 @@
 <launch>
 
-  <arg name="namespace" default="pr2"/>
+  <arg name="namespace" default="pr2" />
 
   <include file="$(find iai_pr2_description)/launch/upload_pr2_calibrated_with_ft2.launch" />
 
   <node pkg="iai_naive_kinematics_sim" type="map_odom_transform_publisher.py" name="map_odom_transform_publisher" output="screen">
-    <param name="parent_frame" value="map"/>
-    <param name="child_frame" value="odom_combined"/>
+    <param name="parent_frame" value="map" />
+    <param name="child_frame" value="odom_combined" />
   </node>
 
   <group ns="$(arg namespace)">
@@ -18,7 +18,10 @@
     </include>
     <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim_mujoco.yaml" />
     <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="spawn
-joint_state_controller whole_body_controller" />
+      joint_state_controller 
+      whole_body_controller 
+      l_gripper_l_finger_controller
+      r_gripper_l_finger_controller" />
     <!-- <node name="rqt_joint_trajectory_controller" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" /> -->
   </group>
 
@@ -26,8 +29,8 @@ joint_state_controller whole_body_controller" />
     <rosparam param="source_list">
       - pr2/joint_states
     </rosparam>
-    <param name="rate" value="120"/>
-    <param name="use_gui" value="False"/>
+    <param name="rate" value="120" />
+    <param name="use_gui" value="False" />
   </node>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
