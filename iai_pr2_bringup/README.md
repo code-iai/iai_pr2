@@ -10,6 +10,10 @@ To change into 16.04:
 
     ease@pr2x:~$ chxenial
 
+To change into 20.04:
+
+    ease@pr2x:~$ noetic
+
 To source the ROS workspace:
 
     ease@pr2x:~$ ros
