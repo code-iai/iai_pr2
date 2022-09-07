@@ -16,16 +16,12 @@ To change into 20.04:
 
 To source the ROS workspace:
 
-    ease@pr2x:~$ ros
-
-or
-
-    (ubuntu1604)ease@pr2x:~$ ros
+    $ ros
 
 
 ---------------------------------------------------------------------
 
-### Commands
+### Commands to start on PR2A
 
 #### roscore
 
@@ -35,13 +31,20 @@ or
 
     ease@pr2a:~$ roslaunch /etc/ros/robot.launch
 
-#### occupancy grid, kitchen urdf, kitchen joint state and tf publisher
+#### map, localization (map to odom transform), joystick
 
-    (ubuntu1604)ease@pr2a:~$ roslaunch iai_maps no_json_obj.launch
+    ease@pr2a:~$ roslaunch iai_pr2_bringup pr2_map_joy_amcl.launch
 
-#### localization (map to odom transform), joystick
+#### whole body controller
 
-    ease@pr2a:~$ roslaunch iai_pr2_bringup pr2_manipulation.launch
+    ease@pr2a:~$ roslaunch iai_pr2_controller_configuration spawn_whole_body_controller.launch
+
+#### giskard on Ubuntu 20.04
+
+    ease@pr2a:~$ noetic
+    (ubuntu2004)ease@pr2a:~$ roslaunch giskardpy giskardpy_pr2_real.launch 
+
+### Commands to start on PR2B
 
 #### camera driver PR2B
 
@@ -51,42 +54,60 @@ or
 
     ease@pr2b:~$ rostopic hz /kinect_head/depth_registered/points
 
-#### robosherlock and knowrob PR2B
+### Commands to start on PR2-EXT
+
+#### kitchen urdf, kitchen joint state and tf publisher
+
+    ease@pr2-ext:~$ roslaunch cram_projection_demos everything.launch pr2:=true apartment:=true upload_robot:=false
+
+#### RoboKudo
+
+    ease@pr2-ext:~$ rosrun robokudo start_rk_query.sh
+
+#### CRAM
+
+    ease@pr2-ext:~$ emacs &
+
+In emacs:
+
+    Ctrl-c l
+
+    CL-USER> (ros-load:load-system "cram_projection_demos" :cram-projection-demos)
+    CL-USER> (ros-load:load-system "cram_pr2_process_modules" :cram-pr2-process-modules)
+    CL-USER> (roslisp-utilities:startup-ros)
+    CL-USER> (pr2-pms:with-real-robot
+               (demos::apartment-demo))
+
+To stop the demo, press Ctrl-C Ctrl-C
+
+#### KnowRob
+
+    ease@pr2-ext:~$ roslaunch knowrob knowrob.launch
+
+If knowrob complains about rosprolog or mongo, start mongo.
+If knowrob doesn't complain, mongo is already started.
+So, first check the status and the start the process
+
+    ease@pr2-ext:~$ sudo systemctl status mongod
+    ease@pr2-ext:~$ sudo systemctl start mongod
+
+#### To collect NEEMs, do this in CRAM:
+
+    CL-USER> (ros-load:load-system "cram_cloud_logger" :cram-cloud-logger)
+    CL-USER> (setf cram-tf:tf-broadcasting-enabled nil)
+    CL-USER> (roslisp-utilities:startup-ros)
+    CL-USER> (ccl::start-episode)
+    CL-USER> (pr2-pms:with-real-robot
+               (demos::apartment-demo))
+    CL-USER> (ccl::stop-episode)
+
+
+
+#### DEPRECATED STUFF: robosherlock and knowrob PR2B
 
     (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock robotvqa.launch # deep learning part
     (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock json_prolog.launch initial_package:=robosherlock # knowrob
     (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock robosherlock.launch # robosherlock itself
-
-#### whole body controller
-
-    ease@pr2a:~$ roslaunch iai_pr2_controller_configuration spawn_whole_body_controller.launch
-
-#### giskard
-
-    (ubuntu1604)ease@pr2b:~$ roslaunch ~/workspace/ros_general/src/iai_pr2/iai_pr2_bringup/launch/giskardpy_with_kitchen.launch # cause iai_pr2 is only in the 14.04 workspace
-
-#### fast IK solver for robot's arms (used by CRAM reasoning)
-
-    ease@pr2a:~$ roslaunch pr2_arm_kinematics pr2_ik_larm_node.launch
-    ease@pr2a:~$ roslaunch pr2_arm_kinematics pr2_ik_rarm_node.launch
-
-#### CRAM
-
-This needs to be started outside of byobu, but on the PR2 (in TurboVNC) on PR2B as it uses OpenGL
-
-    (ubuntu1604)ease@pr2b:~$ vglrun roslisp_repl
-
-
-In the REPL:
-
-    CL-USER> (ros-load:load-system "cram_pr2_pick_place_demo" :cram-pr2-pick-place-demo)
-    CL-USER> (roslisp-msg-protocol:md5sum 'giskard_msgs-msg:<movegoal>)
-    CL-USER> (roslisp-msg-protocol:ros-datatype 'giskard_msgs-msg:<movegoal>)
-    CL-USER> (roslisp-msg-protocol:string-to-ros-msgtype-symbol "giskard_msgs/MoveGoal")
-    CL-USER> (roslisp-utilities:startup-ros)
-    CL-USER> (demo::demo)
-
-To stop the demo, press Ctrl-C Ctrl-C
 
 
 ### How to pair an unpaired PS3 controller
