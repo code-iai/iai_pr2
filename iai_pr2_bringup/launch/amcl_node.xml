@@ -11,12 +11,12 @@
   <param name="max_particles" value="3000"/>
   <param name="kld_err" value="0.05"/>
   <param name="kld_z" value="0.95"/>
-  <param name="odom_alpha1" value="3.0"/>
-  <param name="odom_alpha2" value="3.0"/>
+  <param name="odom_alpha1" value="1.0"/>
+  <param name="odom_alpha2" value="1.0"/>
   <!-- translation std dev, m -->
-  <param name="odom_alpha3" value="3.0"/>
-  <param name="odom_alpha4" value="3.0"/>
-  <param name="odom_alpha5" value="3.0"/>
+  <param name="odom_alpha3" value="1.0"/>
+  <param name="odom_alpha4" value="1.0"/>
+  <param name="odom_alpha5" value="1.0"/>
   <param name="laser_z_hit" value="0.85"/>
   <param name="laser_z_short" value="0.05"/>
   <param name="laser_z_max" value="0.05"/>
