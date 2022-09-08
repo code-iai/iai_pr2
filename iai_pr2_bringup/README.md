@@ -35,14 +35,10 @@ To source the ROS workspace:
 
     ease@pr2a:~$ roslaunch iai_pr2_bringup pr2_map_joy_amcl.launch
 
-#### whole body controller
-
-    ease@pr2a:~$ roslaunch iai_pr2_controller_configuration spawn_whole_body_controller.launch
-
 #### giskard on Ubuntu 20.04
 
     ease@pr2a:~$ noetic
-    (ubuntu2004)ease@pr2a:~$ roslaunch giskardpy giskardpy_pr2_real.launch 
+    (ubuntu2004)ease@pr2a:~$ roslaunch giskardpy giskardpy_pr2_real.launch
 
 ### Commands to start on PR2B
 
