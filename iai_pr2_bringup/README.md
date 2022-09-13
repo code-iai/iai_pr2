@@ -54,7 +54,7 @@ To source the ROS workspace:
 
 #### kitchen urdf, kitchen joint state and tf publisher
 
-    ease@pr2-ext:~$ roslaunch cram_projection_demos everything.launch pr2:=true apartment:=true upload_robot:=false
+    ease@pr2-ext:~$ roslaunch cram_projection_demos everything.launch pr2:=true apartment:=true upload_robot:=false tf2_buffer:=true
 
 #### RoboKudo
 
