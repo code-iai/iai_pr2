@@ -35,11 +35,6 @@ To source the ROS workspace:
 
     ease@pr2a:~$ roslaunch iai_pr2_bringup pr2_map_joy_amcl.launch
 
-#### giskard on Ubuntu 20.04
-
-    ease@pr2a:~$ noetic
-    (ubuntu2004)ease@pr2a:~$ roslaunch giskardpy giskardpy_pr2_real.launch
-
 ### Commands to start on PR2B
 
 #### camera driver PR2B
@@ -51,6 +46,11 @@ To source the ROS workspace:
     ease@pr2b:~$ rostopic hz /kinect_head/depth_registered/points
 
 ### Commands to start on PR2-EXT
+
+#### giskard on pr2-ext
+
+    ease@pr2-ext:~$ roslaunch giskardpy giskardpy_pr2_iai.launch
+
 
 #### kitchen urdf, kitchen joint state and tf publisher
 
@@ -96,6 +96,14 @@ So, first check the status and the start the process
     CL-USER> (pr2-pms:with-real-robot
                (demos::apartment-demo))
     CL-USER> (ccl::stop-episode)
+
+
+#### troubleshooting:
+## giskard doesn't work
+    time may be off, check 
+	$ rostopic delay /joint_states
+    you can fix this by restarting crony
+	service chrony restart
 
 
 
