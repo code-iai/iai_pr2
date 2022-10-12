@@ -14,6 +14,7 @@
     </node>
 
     <include file="$(find iai_robots_control)/launch/iai_donbot_traj_control.launch" />
+    <node name="iai_donbot_joint_trajectory_controller" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" output="screen" />
   </group>
 
   <group ns="iai_pr2">
@@ -31,6 +32,7 @@
       whole_body_controller 
       l_gripper_l_finger_controller
       r_gripper_l_finger_controller" />
+    <node name="iai_pr2_joint_trajectory_controller" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" output="screen" />
   </group>
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find iai_pr2_donbot)/rviz_config/rviz_config.rviz" />

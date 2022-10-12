@@ -7,7 +7,7 @@ max_time_step: 0.005
 add_odom_joints:
   lin_odom_x_joint: true
   lin_odom_y_joint: true
-  lin_odom_z_joint: true
+  lin_odom_z_joint: false
   ang_odom_x_joint: false
   ang_odom_y_joint: false
   ang_odom_z_joint: true
