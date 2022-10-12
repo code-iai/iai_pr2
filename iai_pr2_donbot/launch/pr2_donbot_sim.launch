@@ -1,0 +1,8 @@
+<launch>
+
+  <include file="$(find mujoco_sim)/launch/mujoco_sim.launch">
+    <arg name="config" value="$(find iai_pr2_donbot)/config/pr2_donbot.yaml" />
+    <arg name="robot" value="$(find iai_pr2_donbot)/model/pr2_donbot.xml" />
+  </include>
+
+</launch>
