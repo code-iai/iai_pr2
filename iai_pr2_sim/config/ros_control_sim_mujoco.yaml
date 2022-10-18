@@ -44,13 +44,15 @@ whole_body_controller: &whole_body_controller
     stopped_velocity_tolerance: 0
 
 l_gripper_l_finger_controller:
-  type: effort_controllers/GripperActionController
-  joint: l_gripper_l_finger_joint
+  type: effort_controllers/JointTrajectoryController
+  joints: 
+    - l_gripper_l_finger_joint
   gains: 
     l_gripper_l_finger_joint: { p: 2000, i: 100, d: 50 }
 
 r_gripper_l_finger_controller:
-  type: effort_controllers/GripperActionController
-  joint: r_gripper_l_finger_joint
+  type: effort_controllers/JointTrajectoryController
+  joints: 
+    - r_gripper_l_finger_joint
   gains: 
     r_gripper_l_finger_joint: { p: 2000, i: 100, d: 50 }
