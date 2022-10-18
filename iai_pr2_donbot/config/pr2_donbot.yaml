@@ -1,0 +1,29 @@
+robots:
+  - iai_donbot
+  - iai_pr2
+
+max_time_step: 0.005
+
+add_odom_joints:
+  lin_odom_x_joint: true
+  lin_odom_y_joint: true
+  lin_odom_z_joint: false
+  ang_odom_x_joint: false
+  ang_odom_y_joint: false
+  ang_odom_z_joint: true
+
+pub_object_marker_array_rate: 0.0
+
+pub_object_tf_rate: 10.0
+
+pub_object_state_array_rate: 60.0
+
+pub_world_joint_state_rate: 0.0
+
+pub_base_pose_rate: 60.0
+
+spawn_and_destroy_objects_rate: 600.0
+
+spawn_object_count_per_cycle: 20
+
+root_frame_id: odom

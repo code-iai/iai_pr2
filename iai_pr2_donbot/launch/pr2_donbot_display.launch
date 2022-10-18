@@ -1,0 +1,40 @@
+<launch>
+
+  <include file="$(find iai_pr2_donbot)/launch/pr2_donbot_sim.launch" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="odom_publisher" args="0 0 0 0 0 0 map odom" />
+
+  <group ns="iai_donbot">
+    <param name="robot_description" command="$(find xacro)/xacro '$(find iai_robots_mujoco)/model/iai_donbot.urdf'" />
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      <param name="tf_prefix" value="iai_donbot" />
+      <param name="ignore_timestamp" value="true" />
+      <param name="use_tf_static" value="false" />
+    </node>
+
+    <include file="$(find iai_robots_control)/launch/iai_donbot_traj_control.launch" />
+    <node name="iai_donbot_joint_trajectory_controller" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" output="screen" />
+  </group>
+
+  <group ns="iai_pr2">
+    <param name="robot_description" command="$(find xacro)/xacro '$(find iai_pr2_description)/robots/pr2_calibrated_with_ft2_without_virtual_joints.urdf'" />
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      <param name="tf_prefix" value="iai_pr2" />
+      <param name="ignore_timestamp" value="true" />
+      <param name="use_tf_static" value="false" />
+    </node>
+
+    <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim_mujoco.yaml" />
+    <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="spawn
+      joint_state_controller 
+      whole_body_controller 
+      l_gripper_l_finger_controller
+      r_gripper_l_finger_controller" />
+    <node name="iai_pr2_joint_trajectory_controller" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" output="screen" />
+  </group>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find iai_pr2_donbot)/rviz_config/rviz_config.rviz" />
+
+</launch>
