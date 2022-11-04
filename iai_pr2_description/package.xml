@@ -16,6 +16,6 @@
   <url type="repository">https://github.com/code-iai/iai_robots</url>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <depend>xacro</depend>
-  <depend>pr2_description</depend>
+  <build_depend>xacro</build_depend>
+  <build_depend>pr2_description</build_depend>
 </package>
