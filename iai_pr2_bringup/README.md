@@ -72,9 +72,9 @@ In emacs:
     CL-USER> (ros-load:load-system "cram_pr2_process_modules" :cram-pr2-process-modules)
     CL-USER> (roslisp-utilities:startup-ros)
     CL-USER> (pr2-pms:with-real-robot
-               (demos::apartment-demo))
+         	(demos::apartment-demo-merged :step 0))
 
-To stop the demo, press Ctrl-C Ctrl-C
+To stop the demo, press Ctrl-C Ctrl-C, Step 0 = all, Step 1  = opening/pick and place/closing, Step 2 = pouring
 
 #### KnowRob
 
