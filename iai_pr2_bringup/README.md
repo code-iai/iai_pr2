@@ -98,16 +98,23 @@ So, first check the status and the start the process
     CL-USER> (ccl::stop-episode)
 
 
-#### troubleshooting:
-## giskard doesn't work
-    time may be off, check 
-	$ rostopic delay /joint_states
-    you can fix this by restarting crony
-	service chrony restart
+## troubleshooting:
+### giskard doesn't work
+if you see
+
+    [ERROR] [1671016974.953925]: [/giskard]: '/l_arm_controller/follow_joint_trajectory' preempted, probably because it took to long to execute the goal.
+
+then the time between pr2-ext and pr2 is probably off, you can check
+
+    $ rostopic delay /joint_states
+    
+you can fix this by restarting crony
+
+    service chrony restart
 
 
 
-#### DEPRECATED STUFF: robosherlock and knowrob PR2B
+### DEPRECATED STUFF: robosherlock and knowrob PR2B
 
     (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock robotvqa.launch # deep learning part
     (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock json_prolog.launch initial_package:=robosherlock # knowrob
