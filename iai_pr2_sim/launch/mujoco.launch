@@ -13,8 +13,9 @@
     <include file="$(find mujoco_sim)/launch/mujoco_sim.launch">
       <arg name="robot" value="$(find iai_pr2_description)/robots/pr2_calibrated_with_ft2_without_virtual_joints.urdf" />
       <arg name="use_urdf" value="true" />
-      <arg name="config" default="$(find iai_pr2_sim)/config/mujoco_config.yaml" />
+      <arg name="config" value="$(find iai_pr2_sim)/config/mujoco_config.yaml" />
       <arg name="world" value="$(find iai_pr2_sim)/config/mujoco_world.xml" />
+      <arg name="disable_parent_child_collision_level" value="2" />
     </include>
     <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim_mujoco.yaml" />
     <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="spawn
