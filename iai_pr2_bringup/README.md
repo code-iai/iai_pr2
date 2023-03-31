@@ -23,6 +23,10 @@ To source the ROS workspace:
 
 ### Commands to start on PR2A
 
+If you had to restart the PC or accidentally killed the Terminator, start the old layout with:
+
+    ease@pr2a:~$ terminator -l demo
+
 #### roscore
 
     ease@pr2a:~$ roscore
