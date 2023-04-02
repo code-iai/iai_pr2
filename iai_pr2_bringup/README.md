@@ -18,14 +18,23 @@ To source the ROS workspace:
 
     $ ros
 
+If you had to restart the PC or accidentally killed the Terminator, start the old layout with:
+
+    ease@pr2-ext:~$ terminator -l demo
+    
+Byobu key bindings:
+
+  * change tab go left: F3
+  * change tab go right: F4
+  * new tab: F2
+  * close tab: Ctrl-D
+  * rename tab: F8
+  * detach from Byobu without killing it: F6
+  * open Byobu after detaching from it: ease@pr2a:~$ byobu
 
 ---------------------------------------------------------------------
 
 ### Commands to start on PR2A
-
-If you had to restart the PC or accidentally killed the Terminator, start the old layout with:
-
-    ease@pr2a:~$ terminator -l demo
 
 #### roscore
 
@@ -51,18 +60,21 @@ If you had to restart the PC or accidentally killed the Terminator, start the ol
 
 ### Commands to start on PR2-EXT
 
-#### giskard on pr2-ext
-
-    ease@pr2-ext:~$ roslaunch giskardpy giskardpy_pr2_iai.launch
-
-
 #### kitchen urdf, kitchen joint state and tf publisher
 
     ease@pr2-ext:~$ roslaunch cram_projection_demos everything.launch pr2:=true apartment:=true upload_robot:=false tf2_buffer:=true
 
+#### giskard on pr2-ext
+
+    ease@pr2-ext:~$ roslaunch giskardpy giskardpy_pr2_iai.launch
+
 #### RoboKudo
 
     ease@pr2-ext:~$ rosrun robokudo start_rk_query.sh
+
+#### Localize the robot
+
+    ease@pr2-ext:~$ rviz # MAKE SURE HE'S WELL LOCALIZED
 
 #### CRAM
 
