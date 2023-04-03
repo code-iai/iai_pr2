@@ -2,79 +2,90 @@
 How to start the PR2
 ====================
 
+#### Log into PR2-EXT
 
+Go to the apartment lab on the ground floor.
+Log into `ease` user on `pr2-ext` PC (the PCs are labeled).
+The password is in the iai wiki, you need to be logged in: https://ai.uni-bremen.de/wiki/intern/pr2
 
-### Info
+#### Terminator setup on PR2-EXT
 
-To change into 16.04:
-
-    ease@pr2x:~$ chxenial
-
-To change into 20.04:
-
-    ease@pr2x:~$ noetic
-
-To source the ROS workspace:
-
-    $ ros
-
-If you had to restart the PC or accidentally killed the Terminator, start the old layout with:
+Find the terminator with the robot launch file tabs.
+If you had to restart PR2-EXT or accidentally killed the Terminator, start the old layout with:
 
     ease@pr2-ext:~$ terminator -l demo
-    
+
+### Commands to start on PR2A
+
+#### Byobu on PR2A
+
+Log in into `ease` user on `PR2A` PC (it's located in PR2's feet) and start Byobu (it's like TMux):
+
+    ease@pr2-ext:~$ ssh ease@pr2a
+    ease@pr2a:~$ byobu
+
 Byobu key bindings:
 
   * change tab go left: F3
   * change tab go right: F4
+  * change horizontally split tab go down: Shift-Down
+  * change horizontally split tab go up: Shift-Up
   * new tab: F2
   * close tab: Ctrl-D
   * rename tab: F8
   * detach from Byobu without killing it: F6
   * open Byobu after detaching from it: ease@pr2a:~$ byobu
 
----------------------------------------------------------------------
+#### roscore on PR2A
 
-### Commands to start on PR2A
+Find the tab in Byobu named `core`. If tabs don't have names, go to the first tab. Start `roscore`:
 
-#### roscore
+    ease@pr2a:~$ roscore    
 
-    ease@pr2a:~$ roscore
-
-#### robot drivers
+#### robot drivers on PR2A
 
     ease@pr2a:~$ roslaunch /etc/ros/robot.launch
 
-#### map, localization (map to odom transform), joystick
+#### map, localization (map to odom transform), joystick on PR2A
 
     ease@pr2a:~$ roslaunch iai_pr2_bringup pr2_map_joy_amcl.launch
 
 ### Commands to start on PR2B
 
-#### camera driver PR2B
+#### camera driver on PR2B
+
+Make sure you're on PR2B in Byobu. If not, open a new Byobu tab (F2) and ssh to PR2B: `ssh pr2b`.
 
     ease@pr2b:~$ roslaunch /etc/ros/openni_head.launch
 
-#### keeping camera driver alive PR2B
+#### keeping camera driver alive on PR2B
 
     ease@pr2b:~$ rostopic hz /kinect_head/depth_registered/points
 
 ### Commands to start on PR2-EXT
 
-#### kitchen urdf, kitchen joint state and tf publisher
+Switch the Terminator tab.
+
+#### kitchen urdf, kitchen joint state and tf publisher on PR2-EXT
 
     ease@pr2-ext:~$ roslaunch cram_projection_demos everything.launch pr2:=true apartment:=true upload_robot:=false tf2_buffer:=true
 
-#### giskard on pr2-ext
+#### giskard on PR2-EXT
 
     ease@pr2-ext:~$ roslaunch giskardpy giskardpy_pr2_iai.launch
 
-#### RoboKudo
+#### RoboKudo on PR2-EXT
 
     ease@pr2-ext:~$ rosrun robokudo start_rk_query.sh
 
-#### Localize the robot
+#### Localize the robot on PR2-EXT
 
-    ease@pr2-ext:~$ rviz # MAKE SURE HE'S WELL LOCALIZED
+    ease@pr2-ext:~$ rviz
+    
+*MAKE SURE PR2 IS WELL LOCALIZED!*
+In Rviz, click the `2D Pose Estimate` button, look at the red arrow cloud and the laser scan fitting the apartment outline.
+Press the START button on ESTOP.
+Drive around with the Joystick until well localized.
 
 #### CRAM
 
@@ -92,7 +103,9 @@ In emacs:
 
 To stop the demo, press Ctrl-C Ctrl-C, Step 0 = all, Step 1  = opening/pick and place/closing, Step 2 = pouring
 
-#### KnowRob
+------------------------------------------------------------
+
+#### KnowRob logging on PR2-EXT
 
     ease@pr2-ext:~$ roslaunch knowrob knowrob.launch
 
@@ -113,6 +126,7 @@ So, first check the status and the start the process
                (demos::apartment-demo))
     CL-USER> (ccl::stop-episode)
 
+-----------------------------------------------
 
 ## troubleshooting:
 ### giskard doesn't work
@@ -151,12 +165,6 @@ If no combinations of plugging in / out /sixpair / turning off-on controller hel
 
 
 
-
-
-
-
-
-
 ---------------------------------------------------------------------
 
 ### Useful tools
@@ -185,3 +193,10 @@ Debug PR2:
 
     $ rosrun rqt_pr2_dashboard rqt_pr2_dashboard
 
+To change into 16.04:
+
+    ease@pr2x:~$ chxenial
+
+To change into 20.04:
+
+    ease@pr2x:~$ noetic
