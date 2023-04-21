@@ -830,7 +830,7 @@
   <joint name="l_torso_lift_side_item_profile_joint" type="fixed">
     <parent link="l_torso_lift_side_plate_link"/>
     <child link="l_torso_lift_side_item_profile_link"/>
-    <origin rpy="0 1.570796 0" xyz="0 0 0"/>
+    <origin rpy="0 0 1.570796" xyz="-0.205 0.02 0.05"/>
   </joint>
   <!-- TODO: Finish l_torso_lift_side_item_profile_link -->
   <link name="l_torso_lift_side_item_profile_link">
@@ -869,7 +869,7 @@
   <joint name="r_torso_lift_side_item_profile_joint" type="fixed">
     <parent link="r_torso_lift_side_plate_link"/>
     <child link="r_torso_lift_side_item_profile_link"/>
-    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <origin rpy="0 0 1.570796" xyz="-0.205 -0.02 0.05"/>
   </joint>
   <!-- TODO: Finish r_torso_lift_side_item_profile_link -->
   <link name="r_torso_lift_side_item_profile_link">
@@ -896,7 +896,7 @@
   <joint name="m_torso_lift_side_item_profile_joint" type="fixed">
     <parent link="r_torso_lift_side_item_profile_link"/>
     <child link="m_torso_lift_side_item_profile_link"/>
-    <origin rpy="0 0 0" xyz="0.0535 0.209285 0.176625"/>
+    <origin rpy="0 0 1.570796" xyz="0.23 0.185 0"/>
   </joint>
   <!-- TODO: Finish m_torso_lift_side_item_profile_link -->
   <link name="m_torso_lift_side_item_profile_link">
@@ -923,7 +923,7 @@
   <joint name="t_torso_lift_side_item_profile_joint" type="fixed">
     <parent link="m_torso_lift_side_item_profile_link"/>
     <child link="t_torso_lift_side_item_profile_link"/>
-    <origin rpy="0 0 0" xyz="0.0535 0.209285 0.176625"/>
+    <origin rpy="1.570796 0 0" xyz="0 0 0.52"/>
   </joint>
   <!-- TODO: t_torso_lift_side_item_profile_link -->
   <link name="t_torso_lift_side_item_profile_link">
