@@ -181,71 +181,71 @@ vel_gains: &vel_gains
   d: 0.1
   i_clamp: 10.0
 torso_lift_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: torso_lift_joint
   pid: *vel_gains
 r_upper_arm_roll_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: r_upper_arm_roll_joint
   pid: *vel_gains
 r_shoulder_pan_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: r_shoulder_pan_joint
   pid: *vel_gains
 r_shoulder_lift_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: r_shoulder_lift_joint
   pid: *vel_gains
 r_forearm_roll_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: r_forearm_roll_joint
   pid: *vel_gains
 r_elbow_flex_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: r_elbow_flex_joint
   pid: *vel_gains
 r_wrist_flex_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: r_wrist_flex_joint
   pid: *vel_gains
 r_wrist_roll_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: r_wrist_roll_joint
   pid: *vel_gains
 l_upper_arm_roll_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: l_upper_arm_roll_joint
   pid: *vel_gains
 l_shoulder_pan_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: l_shoulder_pan_joint
   pid: *vel_gains
 l_shoulder_lift_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: l_shoulder_lift_joint
   pid: *vel_gains
 l_forearm_roll_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: l_forearm_roll_joint
   pid: *vel_gains
 l_elbow_flex_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: l_elbow_flex_joint
   pid: *vel_gains
 l_wrist_flex_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: l_wrist_flex_joint
   pid: *vel_gains
 l_wrist_roll_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: l_wrist_roll_joint
   pid: *vel_gains
 head_pan_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: head_pan_joint
   pid: *vel_gains
 head_tilt_velocity_controller:
-  type: velocity_controllers/JointVelocityController
+  type: effort_controllers/JointVelocityController
   joint: head_tilt_joint
   pid: *vel_gains
 
