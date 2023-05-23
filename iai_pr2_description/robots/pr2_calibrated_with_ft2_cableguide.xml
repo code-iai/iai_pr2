@@ -826,18 +826,17 @@
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
   </link>
-  <!-- TODO: Finish l_torso_lift_side_item_profile_joint -->
   <joint name="l_torso_lift_side_item_profile_joint" type="fixed">
     <parent link="l_torso_lift_side_plate_link"/>
     <child link="l_torso_lift_side_item_profile_link"/>
     <origin rpy="0 0 1.570796" xyz="-0.205 0.02 0.05"/>
   </joint>
-  <!-- TODO: Finish l_torso_lift_side_item_profile_link -->
+  <!-- TODO: check mass -->
   <link name="l_torso_lift_side_item_profile_link">
     <inertial>
-      <mass value="0.1"/>
+      <mass value="0.7134"/>
       <origin xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <inertia ixx="0.01008718" ixy="0.0" ixz="0.0" iyy="0.00018726" iyz="0.0" izz="0.01008718"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -865,18 +864,17 @@
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
   </link>
-  <!-- TODO: Finish r_torso_lift_side_item_profile_joint -->
   <joint name="r_torso_lift_side_item_profile_joint" type="fixed">
     <parent link="r_torso_lift_side_plate_link"/>
     <child link="r_torso_lift_side_item_profile_link"/>
     <origin rpy="0 0 1.570796" xyz="-0.205 -0.02 0.05"/>
   </joint>
-  <!-- TODO: Finish r_torso_lift_side_item_profile_link -->
+  <!-- TODO: check mass -->
   <link name="r_torso_lift_side_item_profile_link">
     <inertial>
-      <mass value="0.1"/>
+      <mass value="0.7134"/>
       <origin xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <inertia ixx="0.01008718" ixy="0.0" ixz="0.0" iyy="0.00018726" iyz="0.0" izz="0.01008718"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -892,18 +890,17 @@
       </geometry>
     </collision>
   </link>
-  <!-- TODO: Finish m_torso_lift_side_item_profile_joint -->
   <joint name="m_torso_lift_side_item_profile_joint" type="fixed">
     <parent link="r_torso_lift_side_item_profile_link"/>
     <child link="m_torso_lift_side_item_profile_link"/>
     <origin rpy="0 0 1.570796" xyz="0.23 0.185 0"/>
   </joint>
-  <!-- TODO: Finish m_torso_lift_side_item_profile_link -->
+  <!-- TODO: check check mass -->
   <link name="m_torso_lift_side_item_profile_link">
     <inertial>
-      <mass value="0.1"/>
+      <mass value="0.7308"/>
       <origin xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <inertia ixx="0.01083867" ixy="0.0" ixz="-0.0" iyy="0.00019183" iyz="0.0" izz="0.01083867"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -919,18 +916,17 @@
       </geometry>
     </collision>
   </link>
-  <!-- TODO: Finish t_torso_lift_side_item_profile_joint -->
   <joint name="t_torso_lift_side_item_profile_joint" type="fixed">
     <parent link="m_torso_lift_side_item_profile_link"/>
     <child link="t_torso_lift_side_item_profile_link"/>
     <origin rpy="1.570796 0 0" xyz="0 0 0.52"/>
   </joint>
-  <!-- TODO: t_torso_lift_side_item_profile_link -->
+  <!-- TODO: check check mass -->
   <link name="t_torso_lift_side_item_profile_link">
     <inertial>
-      <mass value="0.1"/>
       <origin xyz="0.0 0.0 0.0"/>
-      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <mass value="1.74"/>
+      <inertia ixx="0.14522837" ixy="0.0" ixz="0.0" iyy="0.00045673" iyz="0.0" izz="0.14522837"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
