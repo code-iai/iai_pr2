@@ -831,11 +831,11 @@
     <child link="l_torso_lift_side_item_profile_link"/>
     <origin rpy="0 0 1.570796" xyz="-0.205 0.02 0.05"/>
   </joint>
-  <!-- TODO: check mass -->
   <link name="l_torso_lift_side_item_profile_link">
     <inertial>
       <mass value="0.7134"/>
       <origin xyz="0.0 0.0 0.0"/>
+      <!-- Calculated using MeshLabInertiaToURDF -->
       <inertia ixx="0.01008718" ixy="0.0" ixz="0.0" iyy="0.00018726" iyz="0.0" izz="0.01008718"/>
     </inertial>
     <visual>
@@ -869,11 +869,11 @@
     <child link="r_torso_lift_side_item_profile_link"/>
     <origin rpy="0 0 1.570796" xyz="-0.205 -0.02 0.05"/>
   </joint>
-  <!-- TODO: check mass -->
   <link name="r_torso_lift_side_item_profile_link">
     <inertial>
       <mass value="0.7134"/>
       <origin xyz="0.0 0.0 0.0"/>
+      <!-- Calculated using MeshLabInertiaToURDF -->
       <inertia ixx="0.01008718" ixy="0.0" ixz="0.0" iyy="0.00018726" iyz="0.0" izz="0.01008718"/>
     </inertial>
     <visual>
@@ -895,11 +895,11 @@
     <child link="m_torso_lift_side_item_profile_link"/>
     <origin rpy="0 0 1.570796" xyz="0.23 0.185 0"/>
   </joint>
-  <!-- TODO: check check mass -->
   <link name="m_torso_lift_side_item_profile_link">
     <inertial>
       <mass value="0.7308"/>
       <origin xyz="0.0 0.0 0.0"/>
+      <!-- Calculated using MeshLabInertiaToURDF -->
       <inertia ixx="0.01083867" ixy="0.0" ixz="-0.0" iyy="0.00019183" iyz="0.0" izz="0.01083867"/>
     </inertial>
     <visual>
@@ -921,11 +921,11 @@
     <child link="t_torso_lift_side_item_profile_link"/>
     <origin rpy="1.570796 0 0" xyz="0 0 0.52"/>
   </joint>
-  <!-- TODO: check check mass -->
   <link name="t_torso_lift_side_item_profile_link">
     <inertial>
       <origin xyz="0.0 0.0 0.0"/>
       <mass value="1.74"/>
+      <!-- Calculated using MeshLabInertiaToURDF -->
       <inertia ixx="0.14522837" ixy="0.0" ixz="0.0" iyy="0.00045673" iyz="0.0" izz="0.14522837"/>
     </inertial>
     <visual>
