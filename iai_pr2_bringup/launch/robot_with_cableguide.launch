@@ -1,7 +1,7 @@
 <launch>
 
-    <!-- Derived from PR2 launch file in /etc/ros/indigo/robot.launch. Uses newer model. -->
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find iai_pr2_description)/robots/pr2_with_odom_joints_calibrated.xacro'" />
+    <!-- Derived from PR2 launch file in /etc/ros/indigo/robot.launch. Uses new model. -->
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find iai_pr2_description)/robots/pr2_calibrated_with_ft2_cableguide.xml'" />
 
     <!-- Robot Analyzer --> <rosparam command="load" file="$(find pr2_bringup)/config/pr2_analyzers.yaml" ns="diag_agg" />
 
