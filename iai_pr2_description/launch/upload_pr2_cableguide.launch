@@ -1,7 +1,3 @@
 <launch>
-
-  <param 
-    name="robot_description" 
-    textfile="$(find iai_pr2_description)/robots/pr2_calibrated_with_ft2_cableguide.xml"/>
-
+  <param name="robot_description" command="$(find xacro)/xacro '$(find iai_pr2_description)/robots/pr2_with_ft2_cableguide.xacro'"/>
 </launch>
