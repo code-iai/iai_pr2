@@ -26,7 +26,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://iai_pr2_description/meshes/cableguide/item_Profil_8_40x40_leicht_L410s.stl" scale="0.001 0.001 0.001"/>
+        <box size="0.04 0.41 0.04"/>
       </geometry>
     </collision>
   </link>
@@ -52,7 +52,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://iai_pr2_description/meshes/cableguide/item_Profil_8_40x40_leicht_L410s.stl" scale="0.001 0.001 0.001"/>
+        <box size="0.04 0.41 0.04"/>
       </geometry>
     </collision>
   </link>
@@ -78,7 +78,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://iai_pr2_description/meshes/cableguide/item_Profil_8_40x40_leicht_L420s.stl" scale="0.001 0.001 0.001"/>
+        <box size="0.04 0.42 0.04"/>
       </geometry>
     </collision>
   </link>
@@ -104,7 +104,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://iai_pr2_description/meshes/cableguide/item_Profil_8_40x40_leicht_L1000s.stl" scale="0.001 0.001 0.001"/>
+        <box size="0.04 1.0 0.04"/>
       </geometry>
     </collision>
   </link>
