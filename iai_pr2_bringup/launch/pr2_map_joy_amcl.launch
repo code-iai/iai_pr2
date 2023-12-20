@@ -2,7 +2,7 @@
 
   <include file="$(find pr2_machine)/$(env ROBOT).machine" />
   <include file="$(find iai_pr2_bringup)/launch/amcl_node.xml" />
-  <include file="$(find iai_pr2_bringup)/launch/pr2_teleop_joy.launch" />
+  <include file="$(find iai_pr2_bringup)/launch/pr2_teleop_joy_ds4.launch" />
   <include file="$(find iai_pr2_bringup)/launch/map.launch" />
   <!-- <include file="$(find pr2_navigation_perception)/lasers_and_filters.xml" /> -->
   <!-- <include file="$(find pr2_navigation_perception)/ground_plane.xml" /> -->
