@@ -5,20 +5,19 @@
   <remap from="mux" to="cmd_vel_mux" />
 </node>
 
-
   <node type="teleop_gripper" pkg="pr2_teleop" name="teleop_gripper_right" output="screen">
-    <param name="open_button" type="int" value="1" />
+    <param name="open_button" type="int" value="0" />
     <param name="close_button" type="int" value="3" />
     <remap from="command" to="r_gripper_controller/command" />
   </node>
 
-  <node type="teleop_gripper" pkg="pr2_teleop" name="teleop_gripper_left" output="screen">
-    <param name="open_button" type="int" value="1" />
+<node type="teleop_gripper" pkg="pr2_teleop" name="teleop_gripper_left" output="screen">
+    <param name="open_button" type="int" value="0" />
     <param name="close_button" type="int" value="3" />
     <remap from="command" to="l_gripper_controller/command" />
   </node>
 
-  <node pkg="pr2_teleop" type="teleop_pr2" name="teleop_pr2" args="--deadman_no_publish" respawn="true" machine="c1">
+  <node pkg="pr2_teleop" type="teleop_pr2" name="teleop_pr2" args="--deadman_no_publish" respawn="true" output="screen" machine="c1">
     <remap from="cmd_vel" to="teleop/cmd_vel" />
 
     <!-- Mux stuff -->
@@ -29,7 +28,7 @@
     <param name="axis_vx" value="4" type="int"/>
     <param name="axis_vy" value="3" type="int"/>
     <param name="axis_vw" value="0" type="int"/>
-    <param name="axis_pan" value="0" type="int"/>
+    <param name="axis_pan" value="3" type="int"/>
     <param name="axis_tilt" value="4" type="int"/>
 
     <!-- Base velocities -->
@@ -44,14 +43,14 @@
     <param name="max_pan" value="2.7" />
     <param name="max_tilt" value="1.4" />
     <param name="min_tilt" value="-0.4" />
-    <param name="tilt_step" value="0.3" />
+    <param name="tilt_step" value="-0.3" />
     <param name="pan_step" value="0.3" />
 
     <!-- Buttons have changed for PS3 controller mapping -->
     <!-- With joystick remapper, this works with all joysticks on "/joy" -->
     <param name="run_button" value="5" type="int" />
-    <param name="torso_dn_button" value="2" type="int" />
-    <param name="torso_up_button" value="0" type="int" />
+    <param name="torso_dn_button" value="1" type="int" />
+    <param name="torso_up_button" value="2" type="int" />
     <param name="head_button" value="6" type="int" />
     <param name="deadman_button" value="4" type="int"/>
 </node>
