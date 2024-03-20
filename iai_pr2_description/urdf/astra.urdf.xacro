@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot name="sensor_astra" xmlns:xacro="http://ros.org/wiki/xacro">
+    <!-- URDF based on the URDF from https://github.com/turtlebot/turtlebot/ 
+         License: BSD 3-Clause 
+         Copyright (c) 2010-2013 , Willow Garage, Inc.
+         Copyright (c) 2013-2018 , Open Source Robotics Foundation
+         Copyright (c) 2024 , IAI, Uni-Bremen
+         All rights reserved.
+    -->
+
+    <!-- Xacro properties -->
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+    <xacro:property name="astra_cam_px" value="-0.0233098" />
+    <xacro:property name="astra_cam_py" value="0.103713" />
+    <xacro:property name="astra_cam_pz" value="0.203344" />
+    <xacro:property name="astra_cam_rx" value="1.2108233029802717" />
+    <xacro:property name="astra_cam_ry" value="-1.5610637440777215" />
+    <xacro:property name="astra_cam_rz" value="0.350549521141168" />
+    <xacro:property name="astra_depth_rel_rgb_py" value="0.0250 " />
+    <xacro:property name="astra_cam_rel_rgb_py" value="-0.0125" />
+    <xacro:property name="astra_dae_display_scale" value="0.7" />
+
+    <xacro:macro name="sensor_astra" params="parent">
+
+        <joint name="camera_joint" type="fixed">
+            <origin xyz="${astra_cam_px} ${astra_cam_py} ${astra_cam_pz}"
+                rpy="${astra_cam_rx} ${astra_cam_ry} ${astra_cam_rz}" />
+            <parent link="${parent}" />
+            <child link="camera_link" />
+        </joint>
+        <link name="camera_link">
+            <visual>
+                <origin xyz="-0.04 0.02 -0.01" rpy="${M_PI/2} 0 ${M_PI/2}" />
+                <geometry>
+                    <mesh filename="package://iai_pr2_description/meshes/sensors/astra.dae"
+                        scale="${astra_dae_display_scale} ${astra_dae_display_scale} ${astra_dae_display_scale}" />
+                </geometry>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.0400 0.1650 0.0300" />
+                </geometry>
+            </collision>
+            <inertial>
+                <mass value="0.564" />
+                <origin xyz="0 0 0" />
+                <inertia ixx="0.003881243" ixy="0.0" ixz="0.0"
+                    iyy="0.000498940" iyz="0.0"
+                    izz="0.003879257" />
+            </inertial>
+        </link>
+
+    </xacro:macro>
+
+</robot>

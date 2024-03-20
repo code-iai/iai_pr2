@@ -3,34 +3,10 @@
   <!-- based on pr2_calibrated_with_ft2.xml -->
 
   <xacro:include filename="$(find iai_pr2_description)/robots/pr2_calibrated_with_ft2.xml"/>
+  <xacro:include filename="$(find iai_pr2_description)/urdf/astra.urdf.xacro"/>
 
-  <joint name="head_mount_kinect2_joint" type="fixed">
-    <parent link="head_plate_frame"/>
-    <child link="head_mount_kinect2_link"/>
-    <origin rpy="0 0 -1.5708" xyz="-0.024 0 0.091"/>
-  </joint>
-  <link name="head_mount_kinect2_link">
-    <inertial>
-      <mass value="0.1"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
-    </inertial>
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://iai_pr2_description/meshes/sensors/microsoft_kinect2.dae" scale="1 1 1"/>
-      </geometry>
-      <material name="gray">
-        <color rgba="0.5 0.5 0.5 1"/>
-      </material>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="0 -0.0147805 0.02515"/>
-      <geometry>
-        <box size="0.250000 0.117597 0.050301"/>
-      </geometry>
-    </collision>
-  </link>
+  <xacro:sensor_astra parent="head_mount_kinect_rgb_optical_frame" />
+  
   <joint name="l_torso_lift_side_item_profile_joint" type="fixed">
     <parent link="l_torso_lift_side_plate_link"/>
     <child link="l_torso_lift_side_item_profile_link"/>
