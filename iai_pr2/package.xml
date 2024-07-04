@@ -1,29 +1,25 @@
 <?xml version="1.0"?>
-<package>
-  <name>iai_pr2</name>
-  <version>0.0.1</version>
-  <description>
-    Collection of descriptions, configurations, and launch-files for
-    the robots of the IAI institute at University Bremen, Germany.
-  </description>
+<package format="3">
+    <name>iai_pr2</name>
+    <version>0.0.1</version>
+    <description>
+        Collection of descriptions, configurations, and launch-files for
+        the robots of the IAI institute at University Bremen, Germany.
+    </description>
+    <maintainer email="georg.bartels@cs.uni-bremen.de">Georg Bartels</maintainer>
 
-  <maintainer email="georg.bartels@cs.uni-bremen.de">Georg Bartels</maintainer>
+    <author email="georg.bartels@cs.uni-bremen.de">Georg Bartels</author>
+    <license>BSD</license>
 
-  <author email="georg.bartels@cs.uni-bremen.de">Georg Bartels</author>
+    <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <license>BSD</license>
+    <member_of_group>ros2</member_of_group>
 
-  <url type="bugtracker">https://github.com/code-iai/iai_pr2/issues</url>
-  <url type="repository">https://github.com/code-iai/iai_pr2</url>
-
-  <buildtool_depend>catkin</buildtool_depend>
-
-  <run_depend>iai_pr2_description</run_depend>
-  <!-- <run_depend>iai_pr2_bringup</run_depend> -->
-  <run_depend>iai_pr2_sim</run_depend>
-  <run_depend>iai_pr2_controller_configuration</run_depend>
-
-  <export>
-    <metapackage/>
-  </export>
+    <exec_depend>iai_pr2_description</exec_depend>
+    <!--  <exec_depend>iai_pr2_sim</exec_depend>-->
+    <!--  <exec_depend>iai_pr2_controller_configuration</exec_depend>-->
+    <export>
+        <build_type>ament_cmake</build_type>
+    </export>
 </package>
+

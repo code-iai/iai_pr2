@@ -1,4 +1,4 @@
-<package>
+<package format="3">
   <name>iai_pr2_description</name>
   <version>0.0.0</version>
   <description>
@@ -7,7 +7,6 @@
   </description>
 
   <maintainer email="georg.bartels@cs.uni-bremen.de">Georg Bartels</maintainer>
-
   <author email="georg.bartels@cs.uni-bremen.de">Georg Bartels</author>
 
   <license>BSD</license>
@@ -15,7 +14,8 @@
   <url type="bugtracker">https://github.com/code-iai/iai_robots/issues</url>
   <url type="repository">https://github.com/code-iai/iai_robots</url>
 
-  <buildtool_depend>catkin</buildtool_depend>
-
-  <run_depend>pr2_description</run_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <export>
+   <build_type>ament_cmake</build_type>
+  </export>
 </package>
