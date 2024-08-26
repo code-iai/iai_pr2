@@ -11,12 +11,6 @@ def generate_launch_description():
     # Path to the upload_pr2.launch.py file
     upload_pr2_launch = os.path.join(package_share_directory, 'launch', 'upload_pr2.launch.py')
 
-    # Path to the URDF file
-    urdf_file = os.path.join(package_share_directory, 'robots', 'pr2_calibrated_with_ft.xml')
-
-    with open(urdf_file, 'r') as infp:
-        robot_description = infp.read()
-
     rviz_config_file = os.path.join(package_share_directory, 'rviz', 'display_config.rviz')
 
     return LaunchDescription([
