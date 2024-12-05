@@ -15,6 +15,10 @@ If you had to restart PR2-EXT or accidentally killed the Terminator, start the o
 
     ease@pr2-ext:~$ terminator -l demo
 
+In every terminal, you need to source the LispCramp workspace
+
+    ease@pr2-ext:~$ source_cram
+
 ### Commands to start on PR2A
 
 #### Byobu on PR2A
