@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find iai_pr2_description)/launch/upload_pr2_calibrated_with_ft2.launch" />
+
+  <!--Load robot in Rviz-->
+  <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/> -->
+
+  <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher" output="screen">
+    <rosparam param="source_list">
+      - pr2/joint_states
+    </rosparam>
+    <param name="rate" value="120" />
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node name="rviz" pkg="rviz" type="rviz"/>
+</launch>

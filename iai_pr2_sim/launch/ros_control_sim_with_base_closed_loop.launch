@@ -1,0 +1,38 @@
+<launch>
+  
+  <include file="$(find iai_pr2_description)/launch/upload_pr2_with_odom_joints.launch" />
+
+  <node pkg="iai_naive_kinematics_sim" type="map_odom_transform_publisher.py" name="map_odom_transform_publisher" output="screen">
+    <param name="parent_frame" value="map"/>
+    <param name="child_frame" value="odom_combined"/>
+  </node>
+
+  <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim_closed_loop.yaml" />
+
+  <node pkg="ros_control_boilerplate" type="sim_hw_main" name="simulator" output="screen">
+    <remap from="joint_states" to="body/joint_states" />
+  </node>
+
+  <node pkg="controller_manager" type="spawner" name="spawner" output="screen" args="joint_state_controller joint_group_pos_controller --shutdown-timeout 0.5" />
+
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
+    <rosparam param="source_list">
+    - base/joint_states
+    - body/joint_states
+    - r_gripper/joint_states
+    - l_gripper/joint_states
+    </rosparam>
+    <rosparam param="zeros">
+    'odom_x_joint': 0.0
+    'odom_y_joint': 0.0
+    'odom_z_joint': 0.0
+    </rosparam>
+    <param name="rate" value="120"/>
+    <param name="use_gui" value="False"/>
+  </node>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+
+  <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" />
+
+</launch>
