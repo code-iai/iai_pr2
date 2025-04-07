@@ -1809,9 +1809,9 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="-0.041 0 0.0776"/>
       <geometry>
-        <sphere radius="0.0005"/>
+        <box size="0.106 0.2957 0.1552"/>
       </geometry>
     </collision>
   </link>

@@ -1,0 +1,3 @@
+<launch>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find iai_pr2_bringup)/maps/pr2_apartment_map-07-09-2022.yaml" />
+</launch>

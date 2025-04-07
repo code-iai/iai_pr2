@@ -2,87 +2,157 @@
 How to start the PR2
 ====================
 
+#### Log into PR2-EXT
 
+Go to the apartment lab on the ground floor.
+Log into `ease` user on `pr2-ext` PC (the PCs are labeled).
+The password is in the iai wiki, you need to be logged in: https://ai.uni-bremen.de/wiki/intern/pr2
 
-### Info
+#### Terminator setup on PR2-EXT
 
-To change into 16.04:
+Find the terminator with the robot launch file tabs.
+If you had to restart PR2-EXT or accidentally killed the Terminator, start the old layout with:
 
-    ease@pr2x:~$ chxenial
+    ease@pr2-ext:~$ terminator -l demo
 
-To source the ROS workspace:
+In every terminal, you need to source the LispCramp workspace
 
-    ease@pr2x:~$ ros
+    ease@pr2-ext:~$ source_cram
 
-or
+### Commands to start on PR2A
 
-    (ubuntu1604)ease@pr2x:~$ ros
+#### Byobu on PR2A
 
+Log in into `ease` user on `PR2A` PC (it's located in PR2's feet) and start Byobu (it's like TMux):
 
----------------------------------------------------------------------
+    ease@pr2-ext:~$ ssh ease@pr2a
+    ease@pr2a:~$ byobu
 
-### Commands
+Byobu key bindings:
 
-#### roscore
+  * change tab go left: F3
+  * change tab go right: F4
+  * change horizontally split tab go down: Shift-Down
+  * change horizontally split tab go up: Shift-Up
+  * new tab: F2
+  * close tab: Ctrl-D
+  * rename tab: F8
+  * detach from Byobu without killing it: F6
+  * open Byobu after detaching from it: ease@pr2a:~$ byobu
 
-    ease@pr2a:~$ roscore
+#### roscore on PR2A
 
-#### robot drivers
+Find the tab in Byobu named `core`. If tabs don't have names, go to the first tab. Start `roscore`:
+
+    ease@pr2a:~$ roscore    
+
+#### robot drivers on PR2A
 
     ease@pr2a:~$ roslaunch /etc/ros/robot.launch
 
-#### occupancy grid, kitchen urdf, kitchen joint state and tf publisher
+#### map, localization (map to odom transform), joystick on PR2A
 
-    (ubuntu1604)ease@pr2a:~$ roslaunch iai_maps no_json_obj.launch
+    ease@pr2a:~$ roslaunch iai_pr2_bringup pr2_map_joy_amcl.launch
 
-#### localization (map to odom transform), joystick
+### Commands to start on PR2B
 
-    ease@pr2a:~$ roslaunch iai_pr2_bringup pr2_manipulation.launch
+#### camera driver on PR2B
 
-#### camera driver PR2B
+Make sure you're on PR2B in Byobu. If not, open a new Byobu tab (F2) and ssh to PR2B: `ssh pr2b`.
 
     ease@pr2b:~$ roslaunch /etc/ros/openni_head.launch
 
-#### keeping camera driver alive PR2B
+#### keeping camera driver alive on PR2B
 
     ease@pr2b:~$ rostopic hz /kinect_head/depth_registered/points
 
-#### robosherlock and knowrob PR2B
+### Commands to start on PR2-EXT
+
+Switch the Terminator tab.
+
+#### kitchen urdf, kitchen joint state and tf publisher on PR2-EXT
+
+    ease@pr2-ext:~$ roslaunch cram_projection_demos everything.launch pr2:=true apartment:=true upload_robot:=false tf2_buffer:=true
+
+#### giskard on PR2-EXT
+
+    ease@pr2-ext:~$ roslaunch giskardpy giskardpy_pr2_iai.launch
+
+#### RoboKudo on PR2-EXT
+
+    ease@pr2-ext:~$ rosrun robokudo start_rk_query.sh
+
+#### Localize the robot on PR2-EXT
+
+    ease@pr2-ext:~$ rviz
+    
+*MAKE SURE PR2 IS WELL LOCALIZED!*
+In Rviz, click the `2D Pose Estimate` button, look at the red arrow cloud and the laser scan fitting the apartment outline.
+Press the START button on ESTOP.
+Drive around with the Joystick until well localized.
+
+#### CRAM
+
+    ease@pr2-ext:~$ emacs &
+
+In emacs:
+
+    Ctrl-c l
+
+    CL-USER> (ros-load:load-system "cram_projection_demos" :cram-projection-demos)
+    CL-USER> (ros-load:load-system "cram_pr2_process_modules" :cram-pr2-process-modules)
+    CL-USER> (roslisp-utilities:startup-ros)
+    CL-USER> (pr2-pms:with-real-robot
+         	(demos::apartment-demo-merged :step 0))
+
+To stop the demo, press Ctrl-C Ctrl-C, Step 0 = all, Step 1  = opening/pick and place/closing, Step 2 = pouring
+
+------------------------------------------------------------
+
+#### KnowRob logging on PR2-EXT
+
+    ease@pr2-ext:~$ roslaunch knowrob knowrob.launch
+
+If knowrob complains about rosprolog or mongo, start mongo.
+If knowrob doesn't complain, mongo is already started.
+So, first check the status and the start the process
+
+    ease@pr2-ext:~$ sudo systemctl status mongod
+    ease@pr2-ext:~$ sudo systemctl start mongod
+
+#### To collect NEEMs, do this in CRAM:
+
+    CL-USER> (ros-load:load-system "cram_cloud_logger" :cram-cloud-logger)
+    CL-USER> (setf cram-tf:tf-broadcasting-enabled nil)
+    CL-USER> (roslisp-utilities:startup-ros)
+    CL-USER> (ccl::start-episode)
+    CL-USER> (pr2-pms:with-real-robot
+               (demos::apartment-demo))
+    CL-USER> (ccl::stop-episode)
+
+-----------------------------------------------
+
+## troubleshooting:
+### giskard doesn't work
+if you see
+
+    [ERROR] [1671016974.953925]: [/giskard]: '/l_arm_controller/follow_joint_trajectory' preempted, probably because it took to long to execute the goal.
+
+then the time between pr2-ext and pr2 is probably off, you can check
+
+    $ rostopic delay /joint_states
+    
+you can fix this by restarting crony
+
+    service chrony restart
+
+
+
+### DEPRECATED STUFF: robosherlock and knowrob PR2B
 
     (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock robotvqa.launch # deep learning part
     (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock json_prolog.launch initial_package:=robosherlock # knowrob
     (ubuntu1604)ease@pr2b:~$ roslaunch robosherlock robosherlock.launch # robosherlock itself
-
-#### whole body controller
-
-    ease@pr2a:~$ roslaunch iai_pr2_controller_configuration spawn_whole_body_controller.launch
-
-#### giskard
-
-    (ubuntu1604)ease@pr2b:~$ roslaunch ~/workspace/ros_general/src/iai_pr2/iai_pr2_bringup/launch/giskardpy_with_kitchen.launch # cause iai_pr2 is only in the 14.04 workspace
-
-#### fast IK solver for robot's arms (used by CRAM reasoning)
-
-    ease@pr2a:~$ roslaunch pr2_arm_kinematics pr2_ik_larm_node.launch
-    ease@pr2a:~$ roslaunch pr2_arm_kinematics pr2_ik_rarm_node.launch
-
-#### CRAM
-
-This needs to be started outside of byobu, but on the PR2 (in TurboVNC) on PR2B as it uses OpenGL
-
-    (ubuntu1604)ease@pr2b:~$ vglrun roslisp_repl
-
-
-In the REPL:
-
-    CL-USER> (ros-load:load-system "cram_pr2_pick_place_demo" :cram-pr2-pick-place-demo)
-    CL-USER> (roslisp-msg-protocol:md5sum 'giskard_msgs-msg:<movegoal>)
-    CL-USER> (roslisp-msg-protocol:ros-datatype 'giskard_msgs-msg:<movegoal>)
-    CL-USER> (roslisp-msg-protocol:string-to-ros-msgtype-symbol "giskard_msgs/MoveGoal")
-    CL-USER> (roslisp-utilities:startup-ros)
-    CL-USER> (demo::demo)
-
-To stop the demo, press Ctrl-C Ctrl-C
 
 
 ### How to pair an unpaired PS3 controller
@@ -96,12 +166,6 @@ You need an account with sudo rights. The ease account doesn't have sudo. Ask so
 If you get the error that there is no controller on the USB bus, try ``$ lsusb`` and ensure that it's detected. Unplug and plug again if you have problems.
 
 If no combinations of plugging in / out /sixpair / turning off-on controller help, ``$ sudo poweroff`` is your friend.
-
-
-
-
-
-
 
 
 
@@ -133,3 +197,10 @@ Debug PR2:
 
     $ rosrun rqt_pr2_dashboard rqt_pr2_dashboard
 
+To change into 16.04:
+
+    ease@pr2x:~$ chxenial
+
+To change into 20.04:
+
+    ease@pr2x:~$ noetic

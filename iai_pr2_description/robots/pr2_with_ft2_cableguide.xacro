@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="pr2">
+  <!-- based on pr2_calibrated_with_ft2.xml -->
+
+  <xacro:include filename="$(find iai_pr2_description)/robots/pr2_calibrated_with_ft2.xml"/>
+
+  <joint name="head_mount_kinect2_joint" type="fixed">
+    <parent link="head_plate_frame"/>
+    <child link="head_mount_kinect2_link"/>
+    <origin rpy="0 0 -1.5708" xyz="-0.024 0 0.091"/>
+  </joint>
+  <link name="head_mount_kinect2_link">
+    <inertial>
+      <mass value="0.1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://iai_pr2_description/meshes/sensors/microsoft_kinect2.dae" scale="1 1 1"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.0147805 0.02515"/>
+      <geometry>
+        <box size="0.250000 0.117597 0.050301"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_torso_lift_side_item_profile_joint" type="fixed">
+    <parent link="l_torso_lift_side_plate_link"/>
+    <child link="l_torso_lift_side_item_profile_link"/>
+    <origin rpy="0 0 1.570796" xyz="-0.205 0.02 0.05"/>
+  </joint>
+  <link name="l_torso_lift_side_item_profile_link">
+    <inertial>
+      <mass value="0.7134"/>
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- Calculated using MeshLabInertiaToURDF -->
+      <inertia ixx="0.01008718" ixy="0.0" ixz="0.0" iyy="0.00018726" iyz="0.0" izz="0.01008718"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://iai_pr2_description/meshes/cableguide/item_Profil_8_40x40_leicht_L410.dae"/>
+      </geometry>
+      <material name="Grey2"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.41 0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_torso_lift_side_item_profile_joint" type="fixed">
+    <parent link="r_torso_lift_side_plate_link"/>
+    <child link="r_torso_lift_side_item_profile_link"/>
+    <origin rpy="0 0 1.570796" xyz="-0.205 -0.02 0.05"/>
+  </joint>
+  <link name="r_torso_lift_side_item_profile_link">
+    <inertial>
+      <mass value="0.7134"/>
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- Calculated using MeshLabInertiaToURDF -->
+      <inertia ixx="0.01008718" ixy="0.0" ixz="0.0" iyy="0.00018726" iyz="0.0" izz="0.01008718"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://iai_pr2_description/meshes/cableguide/item_Profil_8_40x40_leicht_L410.dae"/>
+      </geometry>
+      <material name="Grey2"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.41 0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="m_torso_lift_side_item_profile_joint" type="fixed">
+    <parent link="r_torso_lift_side_item_profile_link"/>
+    <child link="m_torso_lift_side_item_profile_link"/>
+    <origin rpy="0 0 1.570796" xyz="0.23 0.185 0"/>
+  </joint>
+  <link name="m_torso_lift_side_item_profile_link">
+    <inertial>
+      <mass value="0.7308"/>
+      <origin xyz="0.0 0.0 0.0"/>
+      <!-- Calculated using MeshLabInertiaToURDF -->
+      <inertia ixx="0.01083867" ixy="0.0" ixz="-0.0" iyy="0.00019183" iyz="0.0" izz="0.01083867"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://iai_pr2_description/meshes/cableguide/item_Profil_8_40x40_leicht_L420.dae"/>
+      </geometry>
+      <material name="Grey2"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.42 0.04"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="t_torso_lift_side_item_profile_joint" type="fixed">
+    <parent link="m_torso_lift_side_item_profile_link"/>
+    <child link="t_torso_lift_side_item_profile_link"/>
+    <origin rpy="1.570796 0 0" xyz="0 0 0.52"/>
+  </joint>
+  <link name="t_torso_lift_side_item_profile_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0"/>
+      <mass value="1.74"/>
+      <!-- Calculated using MeshLabInertiaToURDF -->
+      <inertia ixx="0.14522837" ixy="0.0" ixz="0.0" iyy="0.00045673" iyz="0.0" izz="0.14522837"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://iai_pr2_description/meshes/cableguide/item_Profil_8_40x40_leicht_L1000.dae"/>
+      </geometry>
+      <material name="Grey2"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.04 1.0 0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+</robot>
