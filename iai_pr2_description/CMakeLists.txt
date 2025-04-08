@@ -23,4 +23,9 @@ install(DIRECTORY sensors/
   DESTINATION share/${PROJECT_NAME}/sensors
 )
 
+# Install materials files
+install(DIRECTORY materials/
+  DESTINATION share/${PROJECT_NAME}/materials
+)
+
 ament_package()
